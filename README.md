@@ -1,0 +1,1 @@
+# HathiTrust WordPress theme
