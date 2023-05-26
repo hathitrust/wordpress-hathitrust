@@ -1,0 +1,114 @@
+{
+    "key": "group_645a68447061a",
+    "title": "Page (Sidebar Only)",
+    "fields": [
+        {
+            "key": "field_645a68755090a",
+            "label": "Sidebar",
+            "name": "sidebar",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "field_63f52625ed87a"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
+        },
+        {
+            "key": "field_645a68c52a2fd",
+            "label": "Page Title Override",
+            "name": "page_title_override",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "field_63f52691d1142"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
+        },
+        {
+            "key": "field_645a68d12a2fe",
+            "label": "Content Blocks",
+            "name": "",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "field_63f52767fdf9b"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page",
+                "operator": "==",
+                "value": "122"
+            }
+        ],
+        [
+            {
+                "param": "page",
+                "operator": "==",
+                "value": "124"
+            }
+        ],
+        [
+            {
+                "param": "page",
+                "operator": "==",
+                "value": "126"
+            }
+        ],
+        [
+            {
+                "param": "page",
+                "operator": "==",
+                "value": "470"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content"
+    ],
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1683647041
+}
