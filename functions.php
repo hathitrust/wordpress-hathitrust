@@ -11,12 +11,11 @@
 
 	// scipt loader tag callback function for adding script type="module" to firebird script tag
 	function add_type_attribute($tag, $handle, $src) {
-		// if not your script, do nothing and return original $tag
-		if ( 'firebird-scripts' !== $handle ) {
-			return $tag;
-		}
-		// change the script tag by adding type="module" and return it.
-		$tag = '<script type="module" src="' . esc_url( $src ) . '"></script>';
+		if ( 'firebird-scripts' === $handle  ) {
+			$tag = '<script type="module" src="' . esc_url( $src ) . '"></script>';
+		} else if ( 'site-scripts' === $handle ) {
+			$tag = '<script type="module" src="' . esc_url( $src ) . '"></script>';
+		} 	
 		return $tag;
 	}
 
@@ -33,8 +32,8 @@
 			wp_enqueue_style( 'home-styles', get_template_directory_uri() . '/home.min.css', array( 'site-fonts', 'site-styles' ), filemtime( get_template_directory() . '/home.min.css' ) );
 		}
 
-		wp_enqueue_script( 'firebird-scripts', 'https://hathitrust-firebird-common.netlify.app/assets/main.js', array(), false, true);
-		wp_enqueue_script( 'site-scripts', get_template_directory_uri() . '/js/scripts.min.js', NULL, filemtime( get_template_directory() . '/js/scripts.min.js' ), TRUE );
+		wp_enqueue_script( 'firebird-scripts', 'https://hathitrust-firebird-common.netlify.app/assets/main.js', array(), false, false);
+		wp_enqueue_script( 'site-scripts', get_template_directory_uri() . '/js/script.js', array('firebird-scripts'), filemtime( get_template_directory() . '/js/scripts.min.js' ), TRUE );
 		wp_enqueue_script( 'fontawesome-scripts', 'https://kit.fontawesome.com/1c6c3b2b35.js');
 		wp_enqueue_script( 'matomo-script', get_template_directory_uri() . '/js/matomo.js');
 
