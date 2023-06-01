@@ -1,0 +1,24 @@
+{
+  "name": "wordpress-hathitrust",
+  "version": "1.0.0",
+  "description": "build tools for minification",
+  "main": "js/scripts.js",
+  "type": "module",
+  "scripts": {
+    "watch": "node watch_build.js",
+    "build": "esbuild js/scripts.js --minify --outfile=js/scripts.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hathitrust/wordpress-hathitrust.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hathitrust/wordpress-hathitrust/issues"
+  },
+  "homepage": "https://github.com/hathitrust/wordpress-hathitrust#readme",
+  "dependencies": {
+    "esbuild": "0.17.19"
+  }
+}

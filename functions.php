@@ -11,12 +11,11 @@
 
 	// scipt loader tag callback function for adding script type="module" to firebird script tag
 	function add_type_attribute($tag, $handle, $src) {
-		// if not your script, do nothing and return original $tag
-		if ( 'firebird-scripts' !== $handle ) {
-			return $tag;
-		}
-		// change the script tag by adding type="module" and return it.
-		$tag = '<script type="module" src="' . esc_url( $src ) . '"></script>';
+		if ( 'firebird-scripts' === $handle  ) {
+			$tag = '<script type="module" src="' . esc_url( $src ) . '"></script>';
+		} else if ( 'site-scripts' === $handle ) {
+			$tag = '<script type="module" src="' . esc_url( $src ) . '"></script>';
+		} 	
 		return $tag;
 	}
 
@@ -26,17 +25,32 @@
 	function pg_enqueue_site_files() {
 
 		wp_enqueue_style( 'site-fonts', get_template_directory_uri() . '/fonts.min.css', NULL, filemtime( get_template_directory() . '/fonts.css' ) );
-		wp_enqueue_style( 'firebird-styles', 'https://hathitrust-firebird-common.netlify.app/assets/main.css');
-		wp_enqueue_style( 'site-styles', get_template_directory_uri() . '/style.min.css', array( 'site-fonts' ), filemtime( get_template_directory() . '/style.min.css' ) );
+		if ( 'local' === wp_get_environment_type() ) {
+			wp_enqueue_style( 'firebird-styles', 'https://hathitrust-firebird-common.netlify.app/assets/main.css');
+			wp_enqueue_style( 'site-styles', get_template_directory_uri() . '/src/css/style.css', array( 'site-fonts' ), filemtime( get_template_directory() . '/src/css/style.css' ) );
+		} else {
+			//need min version of firebird
+			wp_enqueue_style( 'firebird-styles', 'https://hathitrust-firebird-common.netlify.app/assets/main.css');
+			wp_enqueue_style( 'site-styles', get_template_directory_uri() . '/dist/css/style.min.css', array( 'site-fonts' ), filemtime( get_template_directory() . '/dist/css/style.min.css' ) );
+		}	
 
-		if ( is_front_page() ) {
-			wp_enqueue_style( 'home-styles', get_template_directory_uri() . '/home.min.css', array( 'site-fonts', 'site-styles' ), filemtime( get_template_directory() . '/home.min.css' ) );
+
+		if ( is_front_page() && 'local' === wp_get_environment_type() ) {
+			wp_enqueue_style( 'home-styles', get_template_directory_uri() . '/src/css/home.css', array( 'site-fonts', 'site-styles' ), filemtime( get_template_directory() . '/src/css/home.css' ) );
+		} else if ( is_front_page() ) {
+			wp_enqueue_style( 'home-styles', get_template_directory_uri() . '/dist/css/home.min.css', array( 'site-fonts', 'site-styles' ), filemtime( get_template_directory() . '/dist/css/home.min.css' ) );
 		}
 
-		wp_enqueue_script( 'firebird-scripts', 'https://hathitrust-firebird-common.netlify.app/assets/main.js', array(), false, true);
-		wp_enqueue_script( 'site-scripts', get_template_directory_uri() . '/js/scripts.min.js', NULL, filemtime( get_template_directory() . '/js/scripts.min.js' ), TRUE );
+		if ( 'local' === wp_get_environment_type() ) {
+			wp_enqueue_script( 'firebird-scripts', 'https://hathitrust-firebird-common.netlify.app/assets/main.js', array(), false, false);
+			wp_enqueue_script( 'site-scripts', get_template_directory_uri() . '/src/js/scripts.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/scripts.js' ), TRUE );
+		} else {
+			//need min version of firebird
+			wp_enqueue_script( 'firebird-scripts', 'https://hathitrust-firebird-common.netlify.app/assets/main.js', array(), false, false);
+			wp_enqueue_script( 'site-scripts', get_template_directory_uri() . '/dist/js/scripts.min.js', array('firebird-scripts'), filemtime( get_template_directory() . '/dist/js/scripts.min.js' ), TRUE );
+		}
 		wp_enqueue_script( 'fontawesome-scripts', 'https://kit.fontawesome.com/1c6c3b2b35.js');
-		wp_enqueue_script( 'matomo-script', get_template_directory_uri() . '/js/matomo.js');
+		wp_enqueue_script( 'matomo-script', get_template_directory_uri() . '/src/js/matomo.js');
 
 	}
 	add_action( 'wp_enqueue_scripts', 'pg_enqueue_site_files' );
@@ -48,7 +62,7 @@
 	function pg_custom_theme_setup() {
 
 		add_editor_style( 'fonts.min.css' );
-		add_editor_style( 'editor-style.min.css' );
+		add_editor_style( '/dist/css/editor-style.min.css' );
 
 		add_image_size( 'person', 100, 100, TRUE );
 
@@ -203,7 +217,7 @@
 		$settings['style_formats'] = json_encode( $style_formats );
 
 		// cache invalidation for included stylesheets
-		$settings['cache_suffix'] = '?v=' . max( array( filemtime( get_template_directory() . '/editor-style.min.css' ), filemtime( get_template_directory() . '/fonts.min.css' ) ) );
+		$settings['cache_suffix'] = '?v=' . max( array( filemtime( get_template_directory() . '/dist/css/editor-style.min.css' ), filemtime( get_template_directory() . '/fonts.min.css' ) ) );
 
 		return $settings;
 
