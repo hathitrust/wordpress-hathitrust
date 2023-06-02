@@ -27,33 +27,33 @@
 		wp_enqueue_style( 'site-fonts', get_template_directory_uri() . '/fonts.min.css', NULL, filemtime( get_template_directory() . '/fonts.css' ) );
 		if ( 'local' === wp_get_environment_type() ) {
 			wp_enqueue_style( 'firebird-styles', 'https://hathitrust-firebird-common.netlify.app/assets/main.css');
-			wp_enqueue_style( 'site-styles', get_template_directory_uri() . '/src/css/style.css', array( 'site-fonts' ), filemtime( get_template_directory() . '/src/css/style.css' ) );
+			wp_enqueue_style( 'site-styles', get_template_directory_uri() . '/src/css/style.css', array( 'site-fonts', 'firebird-styles' ), filemtime( get_template_directory() . '/src/css/style.css' ) );
 		} else {
 			//need min version of firebird
 			wp_enqueue_style( 'firebird-styles', 'https://hathitrust-firebird-common.netlify.app/assets/main.css');
-			wp_enqueue_style( 'site-styles', get_template_directory_uri() . '/dist/css/style.min.css', array( 'site-fonts' ), filemtime( get_template_directory() . '/dist/css/style.min.css' ) );
+			wp_enqueue_style( 'site-styles', get_template_directory_uri() . '/dist/css/style.min.css', array( 'site-fonts', 'firebird-styles' ), filemtime( get_template_directory() . '/dist/css/style.min.css' ) );
 		}	
 
 
 		if ( is_front_page() && 'local' === wp_get_environment_type() ) {
-			wp_enqueue_style( 'home-styles', get_template_directory_uri() . '/src/css/home.css', array( 'site-fonts', 'site-styles' ), filemtime( get_template_directory() . '/src/css/home.css' ) );
+			wp_enqueue_style( 'home-styles', get_template_directory_uri() . '/src/css/home.css', array( 'site-fonts', 'site-styles', 'firebird-styles'), filemtime( get_template_directory() . '/src/css/home.css' ) );
 		} else if ( is_front_page() ) {
-			wp_enqueue_style( 'home-styles', get_template_directory_uri() . '/dist/css/home.min.css', array( 'site-fonts', 'site-styles' ), filemtime( get_template_directory() . '/dist/css/home.min.css' ) );
+			wp_enqueue_style( 'home-styles', get_template_directory_uri() . '/dist/css/home.min.css', array( 'site-fonts', 'site-styles', 'firebird-styles' ), filemtime( get_template_directory() . '/dist/css/home.min.css' ) );
 		}
 
 		if ( 'local' === wp_get_environment_type() ) {
 			// if you need your local firebird
-			// wp_enqueue_script( 'firebird-scripts', '//localhost:5173/js/main.js', array(), false, true);
+			// wp_enqueue_script( 'firebird-scripts', '//localhost:5173/js/main.js', array(), false, false);
 			wp_enqueue_script( 'firebird-scripts', 'https://hathitrust-firebird-common.netlify.app/assets/main.js', array(), false, true);
 			wp_enqueue_script( 'site-scripts', get_template_directory_uri() . '/src/js/scripts.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/scripts.js' ), TRUE );
 		} else {
 			//need min version of firebird
-			http://localhost:5173/js/main.js
 			wp_enqueue_script( 'firebird-scripts', 'https://hathitrust-firebird-common.netlify.app/assets/main.js', array(), false, false);
 			wp_enqueue_script( 'site-scripts', get_template_directory_uri() . '/dist/js/scripts.min.js', array('firebird-scripts'), filemtime( get_template_directory() . '/dist/js/scripts.min.js' ), TRUE );
 		}
-		wp_enqueue_script( 'fontawesome-scripts', 'https://kit.fontawesome.com/1c6c3b2b35.js');
-		wp_enqueue_script( 'matomo-script', get_template_directory_uri() . '/src/js/matomo.js');
+		wp_enqueue_script( 'fontawesome-scripts', 'https://kit.fontawesome.com/1c6c3b2b35.js', array('firebird-scripts'));
+		wp_enqueue_script( 'matomo-script', get_template_directory_uri() . '/src/js/matomo.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/matomo.js' ));
+		wp_enqueue_script( 'hotjar-script', get_template_directory_uri() . '/src/js/hotjar.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/hotjar.js' ));
 
 	}
 	add_action( 'wp_enqueue_scripts', 'pg_enqueue_site_files' );
