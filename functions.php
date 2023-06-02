@@ -75,23 +75,6 @@
 	}
 	add_action( 'after_setup_theme', 'pg_custom_theme_setup' );
 
-	// fix content page sub-nav menu hover bug
-	/*
-	function navbar_min_height() {
-		// if ( !is_front_page() ) { 
-			?>
-			<style>
-				#ht-header {
-					min-height:12rem;
-				}
-			</style>
-		<?php 
-		// }
-	}
-	add_action('wp_head', 'navbar_min_height');
-	*/
-	
-
 	/**
 	 *  Register locations for navigation. @TODO: This can be removed after header/footer integration.
 	 */
