@@ -51,7 +51,8 @@
 			wp_enqueue_script( 'firebird-scripts', 'https://hathitrust-firebird-common.netlify.app/assets/main.js', array(), false, false);
 			wp_enqueue_script( 'site-scripts', get_template_directory_uri() . '/dist/js/scripts.min.js', array('firebird-scripts'), filemtime( get_template_directory() . '/dist/js/scripts.min.js' ), TRUE );
 			wp_enqueue_script( 'matomo-script', get_template_directory_uri() . '/src/js/matomo.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/matomo.js' ));
-			wp_enqueue_script( 'hotjar-script', get_template_directory_uri() . '/src/js/hotjar.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/hotjar.js' ));
+			// hotjar script to be uncommented as necessary
+			// wp_enqueue_script( 'hotjar-script', get_template_directory_uri() . '/src/js/hotjar.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/hotjar.js' ));
 		}
 
 		wp_enqueue_script( 'fontawesome-scripts', 'https://kit.fontawesome.com/1c6c3b2b35.js', array('firebird-scripts'));
