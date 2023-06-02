@@ -187,13 +187,7 @@ h3,
 }
 /* if a min-height isn't set for the header on content pages, the sub-nav hover styles get messed up */
 #ht-header {
-  min-height: 20.4rem;
-}
-
-@media (min-width: 768px) {
-  #ht-header {
-    min-height: 12.3rem;
-  }
+  min-height: 4.93rem;
 }
 
 /* utility classes */
