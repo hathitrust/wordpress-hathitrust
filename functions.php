@@ -13,8 +13,8 @@
 	function add_type_attribute($tag, $handle, $src) {
 		if ( 'firebird-scripts' === $handle  ) {
 			$tag = '<script type="module" src="' . esc_url( $src ) . '"></script>';
-		} else if ( 'site-scripts' === $handle ) {
-			$tag = '<script type="module" src="' . esc_url( $src ) . '"></script>';
+		// } else if ( 'site-scripts' === $handle ) {
+		// 	$tag = '<script type="module" src="' . esc_url( $src ) . '"></script>';
 		} 	
 		return $tag;
 	}
@@ -42,7 +42,7 @@
 		}
 
 		if ( 'local' === wp_get_environment_type() ) {
-			wp_enqueue_script( 'firebird-scripts', 'https://hathitrust-firebird-common.netlify.app/assets/main.js', array(), false, false);
+			wp_enqueue_script( 'firebird-scripts', 'https://hathitrust-firebird-common.netlify.app/assets/main.js', array(), false, true);
 			wp_enqueue_script( 'site-scripts', get_template_directory_uri() . '/src/js/scripts.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/scripts.js' ), TRUE );
 		} else {
 			//need min version of firebird
