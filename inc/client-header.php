@@ -1,5 +1,5 @@
 <?php 
-if (is_front_page() ){ 
+if (is_front_page() || is_search() ){ 
 ?>
 <hathi-website-header></hathi-website-header>
 <?php
