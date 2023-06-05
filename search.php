@@ -30,7 +30,7 @@
 		while ( have_posts() ) { the_post();
 
 ?>
-		<article class="search-card">
+		<article class="search-card pb">
 			<a href="<?= esc_url( get_permalink() ); ?>"><?= esc_html( get_the_title() ); ?></a>
 			<div><?= get_the_excerpt(); ?></div>
 		</article>
