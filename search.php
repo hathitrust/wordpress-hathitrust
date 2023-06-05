@@ -20,7 +20,9 @@
 ?>
 		<div class="search-head">
 			<p>Search results for “<?= esc_html( get_search_query() ); ?>”</p>
+			<?php if ($wp_query->found_posts) { ?>
 			<p><?= $firstResult . ' to ' . $lastResult . ' of ' . $wp_query->found_posts . ' ' . ngettext( 'result', 'results', $wp_query->found_posts ); ?></p>
+			<?php } ?>
 		</div>
 <?php
 
@@ -56,6 +58,8 @@
 		</div>
 <?php
 
+	} else {
+		?> <p>Your search returned 0 results. Please try a new search.</p> <?php
 	}
 
 ?>
