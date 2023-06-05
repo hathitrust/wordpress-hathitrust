@@ -20,7 +20,9 @@
 ?>
 		<div class="search-head">
 			<p>Search results for “<?= esc_html( get_search_query() ); ?>”</p>
+			<?php if ($wp_query->found_posts) { ?>
 			<p><?= $firstResult . ' to ' . $lastResult . ' of ' . $wp_query->found_posts . ' ' . ngettext( 'result', 'results', $wp_query->found_posts ); ?></p>
+			<?php } ?>
 		</div>
 <?php
 
@@ -28,7 +30,7 @@
 		while ( have_posts() ) { the_post();
 
 ?>
-		<article class="search-card">
+		<article class="search-card pb">
 			<a href="<?= esc_url( get_permalink() ); ?>"><?= esc_html( get_the_title() ); ?></a>
 			<div><?= get_the_excerpt(); ?></div>
 		</article>
@@ -56,6 +58,8 @@
 		</div>
 <?php
 
+	} else {
+		?> <p>Your search returned 0 results. Please try a new search.</p> <?php
 	}
 
 ?>
