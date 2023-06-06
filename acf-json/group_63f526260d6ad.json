@@ -752,8 +752,8 @@
                 },
                 "layout_646509946fd82": {
                     "key": "layout_646509946fd82",
-                    "name": "promo_box_2",
-                    "label": "Promo Box (v2)",
+                    "name": "feedback_form",
+                    "label": "Feedback Form",
                     "display": "block",
                     "sub_fields": [
                         {
