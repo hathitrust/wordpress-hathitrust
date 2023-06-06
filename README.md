@@ -10,6 +10,26 @@ Locally, the theme is set up to use unminified CSS and JS files from the `/src` 
 define( 'WP_ENVIRONMENT_TYPE', 'local' );
 ```
 
+## deploy to server
+1. Push your changes up to the repo (origin/main or PR dance).
+1. For preview: On dev-3, the preview site is at `preview.www`. To update the theme, navigate to `preview.www/wp-content/themes/wordpress-hathitrust` and pull down the latest from github. 
+
 ## scripts and styles
 
 Wordpress has a "fun" way of adding script and style tags to the site. If you need to add a one-line script or style tag, that's pretty easy to do following the many examples in `functions.php` within the `pg_enqueue_site_files()` function. (To deciper the variables being passed to the style and script functions, see [wp_enqueue_script() docs](https://developer.wordpress.org/reference/functions/wp_enqueue_script/)). For something a little longer (like our several-line matomo script), you'll want to add a separate file to the `/js/` directory and link to it from `functions.php`. You might notice that some of our scripts are loaded based on environment or page location (`if (is_front_page())` or ` if ('local' === wp_get_environment_type())`). If you want to load a script/style on a specific page or set of pages, Wordpress probably has a [conditional tag](https://codex.wordpress.org/Conditional_Tags) for it.
+
+## firebird components
+
+### header
+
+`/inc/client-header.php`
+
+### footer
+
+`/inc/client-footer.php`
+
+### feedback form
+
+Front-end/template piece: `/inc/block-feedback_form.php`
+Back-end/ACF registration: `/acf-json/group_63f526260d6ad.json`
+
