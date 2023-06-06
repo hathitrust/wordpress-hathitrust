@@ -11,9 +11,17 @@
 
 ?>
 <div class="twocol">
-	<div class="twocol-side">
-		<h1><?= wp_kses_post( $title ); ?></h1>
+<div class="twocol-side">
+		<h1>Hathifiles</h1>
+<?php
 
+			if ( have_rows( 'sidebar_blocks' ) ) {
+				while ( have_rows( 'sidebar_blocks' ) ) { the_row();
+					get_template_part( 'inc/sidebar-block', get_row_layout() );
+				}
+			}
+
+?>
 	</div>
 	<div class="twocol-main">
 		<div class="mainplain">

@@ -432,7 +432,7 @@
 		});
 
 		foreach ($html as $key => $value) {
-			echo "$value->filePath";
+			// echo "$value->filePath";
 			echo "<tr><td><a href='https://www.hathitrust.org/sites/www.hathitrust.org/files/hathifiles/".$value->fileName."'>".$value->fileName."</a></td><td>".date('M d, Y', $value->lastModified)."</td><td>".$value->fileSize."</td></tr>";
 		}
 	}
