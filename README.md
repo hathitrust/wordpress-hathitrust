@@ -38,11 +38,15 @@ Back-end/ACF registration: `/acf-json/group_63f526260d6ad.json`
 
 Generally, custom pages include a template file or template piece that is linked to a specific wordpress content page or pages. The piece that connects the content page to the template file is the page `post_name`, which is also the URL slug of the page. This `post_name`/slug needs to match the trailing name of the template file after `page-` in order to render.
 
+If you would like a quick 10-minute screencast about custom pages and template files, here ya go: [Caryl creates the search widgets custom template and WP page](https://www.loom.com/share/ca81472dc14e4597adfa6f7feb482ec0)
+
 ### Hathifiles
 
 Template file: `page-hathifiles.php` is more-or-less and copy/paste job of index.php (includes functions to grab header/footer/breadcrumbs/content) with additional markup for the file listing table and subsequent function that adds the files as rows to the table. You can find and edit the `file_list()` function at the bottom of `functions.php`.
 
 Wordpress content: The general page content (including page title and URL slug) can be updated on the Hathifiles edit page screen. From the WP dashboard, select **Pages** from the sidebar. Locate the page named "Hathifiles" and click the blue title link or hover and select "Edit" from under the title.
 
+### Search widgets
 
+Template file: `page-widgets.php` has 5 search widget boxes under the regular content box
 
