@@ -31,5 +31,18 @@ Wordpress has a "fun" way of adding script and style tags to the site. If you ne
 ### feedback form
 
 Front-end/template piece: `/inc/block-feedback_form.php`
+
 Back-end/ACF registration: `/acf-json/group_63f526260d6ad.json`
+
+## custom wordpress pages
+
+Generally, custom pages include a template file or template piece that is linked to a specific wordpress content page or pages. The piece that connects the content page to the template file is the page `post_name`, which is also the URL slug of the page. This `post_name`/slug needs to match the trailing name of the template file after `page-` in order to render.
+
+### Hathifiles
+
+Template file: `page-hathifiles.php` is more-or-less and copy/paste job of index.php (includes functions to grab header/footer/breadcrumbs/content) with additional markup for the file listing table and subsequent function that adds the files as rows to the table. You can find and edit the `file_list()` function at the bottom of `functions.php`.
+
+Wordpress content: The general page content (including page title and URL slug) can be updated on the Hathifiles edit page screen. From the WP dashboard, select **Pages** from the sidebar. Locate the page named "Hathifiles" and click the blue title link or hover and select "Edit" from under the title.
+
+
 
