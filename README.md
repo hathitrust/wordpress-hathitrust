@@ -46,5 +46,7 @@ Template file: `page-hathifiles.php` is more-or-less and copy/paste job of index
 
 Wordpress content: The general page content (including page title and URL slug) can be updated on the Hathifiles edit page screen. From the WP dashboard, select **Pages** from the sidebar. Locate the page named "Hathifiles" and click the blue title link or hover and select "Edit" from under the title.
 
+### Search widgets
 
+Template file: `page-widgets.php` has 5 search widget boxes under the regular content box
 
