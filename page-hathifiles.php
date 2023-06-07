@@ -38,14 +38,19 @@
 			}
 
 ?>
-        <table class="table">
-            <tr>
-                <th>File</th>
-                <th>Date</th>
-                <th>File size</th>
-            </tr>
-            <?php hathifiles(); ?>
-        </table>
+        <div class="btable-wrapper">
+            <table class="btable">
+                <thead>
+                <tr>
+                    <th>File</th>
+                    <th>Date</th>
+                    <th>File size</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <?php hathifiles(); ?>
+                </tbody>
+            </table>
 		</div>
 
 	</div>
