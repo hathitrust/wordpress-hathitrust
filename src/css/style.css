@@ -723,6 +723,12 @@ h3,
 .pb-contents > *:first-child {
   margin-top: 0;
 }
+.pb.widget-container {
+  margin-top: 2rem;
+}
+.pb.widget-container h2 {
+  margin-top:.25rem;
+}
 
 /* cards */
 .post-cards {
@@ -843,6 +849,7 @@ h3,
     gap: 1.85rem;
     padding-inline: 1.875rem;
   }
+
   .pb-link {
     align-self: center;
   }
