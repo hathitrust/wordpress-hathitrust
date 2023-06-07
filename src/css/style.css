@@ -649,6 +649,7 @@ h3,
   min-width: 100%;
   border-spacing: 0;
   --border: 1px solid var(--primary500);
+  border-collapse: separate;
 }
 .btable :is(th, td) {
   padding: 1.25rem 1rem;
