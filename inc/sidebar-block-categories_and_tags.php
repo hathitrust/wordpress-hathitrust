@@ -57,6 +57,8 @@
 
 	### BEGIN TAGS LIST ###
 
+	/*commenting out the tags for launch (summer 2023), will re-enable when we're ready */
+	/*
 	$terms = get_terms( array(
 		'taxonomy'		=> 'tags',
 		'hide_empty'	=> FALSE
@@ -128,6 +130,9 @@
 <?php
 
 	}
+
+	*/ 
+	## end of commented out tags
 
 	### END TAGS LIST ###
 
