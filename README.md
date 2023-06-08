@@ -48,5 +48,50 @@ Wordpress content: The general page content (including page title and URL slug) 
 
 ### Search widgets
 
-Template file: `page-widgets.php` has 5 search widget boxes under the regular content box
+Template file: `page-widgets.php` has 5 search widget boxes under the regular content box. As of June 2023, these widgets use the files from the current prod site. I assume the files will be moved/served from wordpress but the paths in the widgets will remain the same?
 
+### Ingest reports
+
+Template file: `page-ingest-reports.php` at the moment is blank page with an empty table. The `file_list()` function needs to be updated with the path to the files and the output for the link path.
+
+## updates and upgrades
+
+To update/upgrade plugins and WP core, use the `wp cli` tool. It's installed under `carylw.www`. I was too nervous to add it to `/usr/bin` or wherever, so you'll have to use the full php commmand. From the directory where the core Wordpress files are installed, run: 
+
+```
+php /htapps/carylw.www/wp-cli.phar [command] <options>
+```
+
+Full list of commands: [wp-cli commmands](https://developer.wordpress.org/cli/commands/)
+
+### install plugin
+
+[wp plugin <command>](https://developer.wordpress.org/cli/commands/plugin/)
+
+You'll need to search for the name of the plugin first, e.g.: `php /htapps/carylw.www/wp-cli.phar plugin search "safe redirect"`
+
+Take the slug of the plugin from that list and run install with the activate option: `php /htapps/carylw.www/wp-cli.phar plugin install --activate safe-redirect-manager`
+
+### update plugin
+
+I've disabled auto-updates for plugins, so this needs to be done manually.
+
+To get a list of the installed plugins and their update status/version number: `php /htapps/carylw.www/wp-cli.phar plugin list`
+
+There are generally two schools of thought when it comes to updating plugins: 
+
+1. do them all at once and let the chips fall where they may
+2. update them one at a time and make sure your site didn't break
+
+We don't have very many plugins installed so maybe it doesn't really matter (and you can always downgrade a plugin), but upgrade all at once at your own risk.
+
+Commands:
+- `plugin update --all`
+- `plugin update --all --minor`
+- `plugin update safe-redirect-manager`
+
+### upgrade WP core
+
+[wp core update](https://developer.wordpress.org/cli/commands/core/update/)
+
+`php /htapps/carylw.www/wp-cli.phar core update` handles the downloading and installation of the latest WP version for you, but there are options for updating/downgrading to a specific version if that's necessary.
