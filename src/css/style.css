@@ -554,7 +554,7 @@ h3,
   margin-top: 0 !important;
 }
 .twocol-main :is(ol, ul):not(.semlist) {
-  padding-left: 1.5rem;
+  padding-left: 3rem;
 }
 .people {
   display: grid;
