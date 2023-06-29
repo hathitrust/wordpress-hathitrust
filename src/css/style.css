@@ -459,6 +459,7 @@ h3,
 }
 .js .sidenav.hasbg {
   isolation: isolate;
+  position: relative;
 }
 .js .sidenav.hasbg::before {
   position: absolute;
