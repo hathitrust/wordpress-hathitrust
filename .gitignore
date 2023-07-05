@@ -8,4 +8,5 @@
 node_modules/
 
 # build products
-dist/
+dist/css/styles.min.css
+dist/js/scripts.min.js
