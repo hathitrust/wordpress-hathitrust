@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "watch": "node watch_build.js",
-    "build": "esbuild js/scripts.js --minify --outfile=js/scripts.min.js"
+    "build": "esbuild src/js/scripts.js --minify --outfile=dist/js/scripts.min.js && esbuild src/css/style.css --minify --outfile=dist/css/style.min.css"
   },
   "repository": {
     "type": "git",
