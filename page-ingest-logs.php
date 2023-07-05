@@ -42,23 +42,10 @@
 
         ?>
             <div class="btable-wrapper">
-                <table class="btable">
-                    <thead>
-                    <tr>
-                        <th>File</th>
-                        <th>Date</th>
-                        <th>File size</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <?php 
-                        //takes $directory and $linkpath variables and creates table rows 
-                        file_list("/htapps/test.www/files/ingest_reports",
-                          "https://www.hathitrust.org/sites/www.hathitrust.org/files/ingest_reports/");
-                         ?>
-
-                    </tbody>
-                </table>
+                <?php
+                  echo do_shortcode('[m1dll path="sites/www.hathitrust.org/files/ingest_logs"
+                    label="Ingest Logs" filetime="M d, Y" foldertime="M d, Y"]');
+                ?>
             </div>
         </div>
 	</div>

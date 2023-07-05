@@ -24,13 +24,23 @@
 	 */
 	function pg_enqueue_site_files() {
 
+		$firebird_manifest = array();
+		if ( array_key_exists('SDRROOT', $_SERVER) ) {
+			$BABEL_ROOT = str_replace('.www', '.babel', $_SERVER['SDRROOT']);
+			$firebird_manifest_filename = $BABEL_ROOT . '/firebird-common/dist/manifest.json';
+			if ( file_exists(($firebird_manifest_filename)) ) {
+				$firebird_manifest = json_decode(file_get_contents($firebird_manifest_filename), true);
+			}
+		}
+
 		wp_enqueue_style( 'site-fonts', get_template_directory_uri() . '/fonts.min.css', NULL, filemtime( get_template_directory() . '/fonts.css' ) );
 		if ( 'local' === wp_get_environment_type() ) {
 			wp_enqueue_style( 'firebird-styles', 'https://hathitrust-firebird-common.netlify.app/assets/main.css');
 			wp_enqueue_style( 'site-styles', get_template_directory_uri() . '/src/css/style.css', array( 'site-fonts', 'firebird-styles' ), filemtime( get_template_directory() . '/src/css/style.css' ) );
 		} else {
 			//need min version of firebird
-			wp_enqueue_style( 'firebird-styles', 'https://hathitrust-firebird-common.netlify.app/assets/main.css');
+			// wp_enqueue_style( 'firebird-styles', 'https://hathitrust-firebird-common.netlify.app/assets/main.css');
+			wp_enqueue_style( 'firebird-styles', '/common/firebird/dist/' . $firebird_manifest['index.css']['file']);
 			wp_enqueue_style( 'site-styles', get_template_directory_uri() . '/dist/css/style.min.css', array( 'site-fonts', 'firebird-styles' ), filemtime( get_template_directory() . '/dist/css/style.min.css' ) );
 		}	
 
@@ -47,8 +57,11 @@
 			wp_enqueue_script( 'firebird-scripts', 'https://hathitrust-firebird-common.netlify.app/assets/main.js', array(), false, true);
 			wp_enqueue_script( 'site-scripts', get_template_directory_uri() . '/src/js/scripts.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/scripts.js' ), TRUE );
 		} else {
-			//need min version of firebird
-			wp_enqueue_script( 'firebird-scripts', 'https://hathitrust-firebird-common.netlify.app/assets/main.js', array(), false, false);
+		//need min version of firebird
+		// wp_enqueue_script( 'firebird-scripts', 'https://hathitrust-firebird-common.netlify.app/assets/main.js', array(), false, false);
+
+		  wp_enqueue_script('firebird-scripts', '/common/firebird/dist/' . $firebird_manifest['index.html']['file'], array(), false, false);
+
 			wp_enqueue_script( 'site-scripts', get_template_directory_uri() . '/dist/js/scripts.min.js', array('firebird-scripts'), filemtime( get_template_directory() . '/dist/js/scripts.min.js' ), TRUE );
 			wp_enqueue_script( 'matomo-script', get_template_directory_uri() . '/src/js/matomo.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/matomo.js' ));
 			// hotjar script to be uncommented as necessary
@@ -393,7 +406,7 @@
 	//format bytes to mb/kb
 	function formatBytes($size, $precision = 2) {
 		$base = log($size, 1024);
-		$suffixes = array('', 'KB', 'MB', 'GB', 'TB');   
+		$suffixes = array('B', 'kB', 'MB', 'GB', 'TB');   
 
 		return round(pow(1024, $base - floor($base)), $precision) .' '. $suffixes[floor($base)];
 	}
@@ -415,7 +428,9 @@
 		}
 		foreach ($files as $file) {
 			$hathifile = new HTfile();
-			if (! $files->isDir() )
+			//if ($files->isDir() ) {
+			//  $href = add_query_arg(rawurlencode(base64_encode($directory . '/' . $file)));
+			//}
 		
 			$hathifile->fileName = $files->getFileName();
 			// $hathifile->filePath = $files->getPathName();

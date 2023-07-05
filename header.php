@@ -15,7 +15,7 @@
 
 ?>
 </head>
-<body <?php body_class(); ?> tabindex="-1">
+<body <?php body_class(); ?> tabindex="-1" style="visibility: hidden; opacity: 0;">
 <?php
 
 	wp_body_open();
