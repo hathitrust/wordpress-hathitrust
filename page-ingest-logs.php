@@ -10,7 +10,6 @@
             $override = get_field( 'title_override' );
 			$title = $override ? $override : get_the_title();
 
-			
 
 ?>
 <div class="twocol">
@@ -43,7 +42,7 @@
         ?>
             <div class="btable-wrapper">
                 <?php
-                  echo do_shortcode('[m1dll path="sites/www.hathitrust.org/files/ingest_logs"
+                  echo do_shortcode('[ht_wp_filelist path="sites/www.hathitrust.org/files/ingest_logs"
                     label="Ingest Logs" filetime="M d, Y" foldertime="M d, Y"]');
                 ?>
             </div>
