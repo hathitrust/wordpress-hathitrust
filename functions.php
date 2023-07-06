@@ -24,12 +24,17 @@
 	 */
 	function pg_enqueue_site_files() {
 
-		$firebird_manifest = array();
+		$firebird_manifest = array(
+			'stylesheet' => '//hathitrust-firebird-common.netlify.app/assets/index.css',
+			'script' => '//hathitrust-firebird-common.netlify.app/assets/index.js'
+		);
 		if ( array_key_exists('SDRROOT', $_SERVER) ) {
 			$BABEL_ROOT = str_replace('.www', '.babel', $_SERVER['SDRROOT']);
 			$firebird_manifest_filename = $BABEL_ROOT . '/firebird-common/dist/manifest.json';
 			if ( file_exists(($firebird_manifest_filename)) ) {
-				$firebird_manifest = json_decode(file_get_contents($firebird_manifest_filename), true);
+				$firebird_config = json_decode(file_get_contents($firebird_manifest_filename), true);
+				$firebird_manifest['stylesheet'] = '/common/firebird/dist/' . $firebird_config['index.css']['file'];
+				$firebird_manifest['script'] = '/common/firebird/dist/' . $firebird_config['index.html']['file'];
 			}
 		}
 
@@ -40,7 +45,7 @@
 		} else {
 			//need min version of firebird
 			// wp_enqueue_style( 'firebird-styles', 'https://hathitrust-firebird-common.netlify.app/assets/main.css');
-			wp_enqueue_style( 'firebird-styles', '/common/firebird/dist/' . $firebird_manifest['index.css']['file']);
+			wp_enqueue_style( 'firebird-styles', $firebird_manifest['stylesheet']);
 			wp_enqueue_style( 'site-styles', get_template_directory_uri() . '/dist/css/style.min.css', array( 'site-fonts', 'firebird-styles' ), filemtime( get_template_directory() . '/dist/css/style.min.css' ) );
 		}	
 
@@ -60,7 +65,7 @@
 		//need min version of firebird
 		// wp_enqueue_script( 'firebird-scripts', 'https://hathitrust-firebird-common.netlify.app/assets/main.js', array(), false, false);
 
-		  wp_enqueue_script('firebird-scripts', '/common/firebird/dist/' . $firebird_manifest['index.html']['file'], array(), false, false);
+		  wp_enqueue_script('firebird-scripts', $firebird_manifest['script'], array(), false, false);
 
 			wp_enqueue_script( 'site-scripts', get_template_directory_uri() . '/dist/js/scripts.min.js', array('firebird-scripts'), filemtime( get_template_directory() . '/dist/js/scripts.min.js' ), TRUE );
 			wp_enqueue_script( 'matomo-script', get_template_directory_uri() . '/src/js/matomo.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/matomo.js' ));
