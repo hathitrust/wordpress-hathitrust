@@ -62,23 +62,23 @@
 			wp_enqueue_script( 'firebird-scripts', 'https://hathitrust-firebird-common.netlify.app/assets/main.js', array(), false, true);
 			wp_enqueue_script( 'site-scripts', get_template_directory_uri() . '/src/js/scripts.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/scripts.js' ), TRUE );
 		} else {
-		//need min version of firebird
-		// wp_enqueue_script( 'firebird-scripts', 'https://hathitrust-firebird-common.netlify.app/assets/main.js', array(), false, false);
 
 		  wp_enqueue_script('firebird-scripts', $firebird_manifest['script'], array(), false, false);
 
 			wp_enqueue_script( 'site-scripts', get_template_directory_uri() . '/dist/js/scripts.min.js', array('firebird-scripts'), filemtime( get_template_directory() . '/dist/js/scripts.min.js' ), TRUE );
 			wp_enqueue_script( 'matomo-script', get_template_directory_uri() . '/src/js/matomo.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/matomo.js' ));
-			// hotjar script to be uncommented as necessary
-			// wp_enqueue_script( 'hotjar-script', get_template_directory_uri() . '/src/js/hotjar.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/hotjar.js' ));
+			// hotjar is enabled through ping + firebird-common
 		}
-
-		wp_enqueue_script( 'fontawesome-scripts', 'https://kit.fontawesome.com/1c6c3b2b35.js', array('firebird-scripts'));
-
-
 	}
 	add_action( 'wp_enqueue_scripts', 'pg_enqueue_site_files' );
 	add_filter( 'script_loader_tag', 'add_type_attribute', 10, 3);
+
+	add_filter('script_loader_src', 'ht_remove_scheme_domain');
+	add_filter('style_loader_src', 'ht_remove_scheme_domain');
+	function ht_remove_scheme_domain($url) {
+		if (is_admin()) return $url;
+		return str_replace(site_url(), '', $url);
+	}
 
 	/**
 	 *  Activate extended theme features.
