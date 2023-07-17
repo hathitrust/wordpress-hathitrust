@@ -28,14 +28,12 @@
 			'stylesheet' => '//hathitrust-firebird-common.netlify.app/assets/index.css',
 			'script' => '//hathitrust-firebird-common.netlify.app/assets/index.js'
 		);
-		if ( array_key_exists('SDRROOT', $_SERVER) ) {
-			$BABEL_ROOT = str_replace('.www', '.babel', $_SERVER['SDRROOT']);
-			$firebird_manifest_filename = $BABEL_ROOT . '/firebird-common/dist/manifest.json';
-			if ( file_exists(($firebird_manifest_filename)) ) {
-				$firebird_config = json_decode(file_get_contents($firebird_manifest_filename), true);
-				$firebird_manifest['stylesheet'] = '/common/firebird/dist/' . $firebird_config['index.css']['file'];
-				$firebird_manifest['script'] = '/common/firebird/dist/' . $firebird_config['index.html']['file'];
-			}
+		$BABEL_ROOT = str_replace('www', 'babel', $_SERVER['DOCUMENT_ROOT']);
+		$firebird_manifest_filename = $BABEL_ROOT . '/firebird-common/dist/manifest.json';
+		if ( file_exists(($firebird_manifest_filename)) ) {
+			$firebird_config = json_decode(file_get_contents($firebird_manifest_filename), true);
+			$firebird_manifest['stylesheet'] = '/common/firebird/dist/' . $firebird_config['index.css']['file'];
+			$firebird_manifest['script'] = '/common/firebird/dist/' . $firebird_config['index.html']['file'];
 		}
 
 		wp_enqueue_style( 'site-fonts', get_template_directory_uri() . '/fonts.min.css', NULL, filemtime( get_template_directory() . '/fonts.css' ) );
