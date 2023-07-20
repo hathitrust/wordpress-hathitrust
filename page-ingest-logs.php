@@ -42,7 +42,7 @@
         ?>
             <div class="btable-wrapper">
                 <?php
-                  echo do_shortcode('[ht_wp_filelist path="sites/www.hathitrust.org/files/ingest_logs"
+                  echo do_shortcode('[ht_wp_filelist path="files/ingest_logs"
                     label="Ingest Logs" filetime="M d, Y" foldertime="M d, Y"]');
                 ?>
             </div>

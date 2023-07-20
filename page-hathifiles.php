@@ -53,7 +53,7 @@
                     <tbody>
                         <?php 
                         //takes $directory and $linkpath variables and creates table rows 
-                        file_list("/htapps/test.www/files/hathifiles", "https://www.hathitrust.org/sites/www.hathitrust.org/files/hathifiles/" ); ?>
+                        file_list("/htapps/www/files/hathifiles", "https://www.hathitrust.org/files/hathifiles/" ); ?>
                     </tbody>
                 </table>
             </div>
