@@ -20,7 +20,7 @@
 		setTimeout(function() {
 			document.body.style.visibility = 'visible';
 			document.body.style.opacity = '1';
-		}, 1000);
+		}, 1500);
 	</script>
 </head>
 <body <?php body_class(); ?> tabindex="-1" style="visibility: hidden; opacity: 0;">
