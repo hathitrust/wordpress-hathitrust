@@ -2,7 +2,7 @@
 Theme Name:		HathiTrust 2023
 Author:			John Green @ Phire Group
 Author URI:		https://phiregroup.com/
-Version:		1.0
+Version:		1.1.20230824
 */
 
 :root {
@@ -171,9 +171,12 @@ h3,
 .bold {
   font-weight: 700;
 }
-.caption {
-  font-size: 0.75rem;
+.caption, .wp-caption-text {
+  font-size: .75rem;
   line-height: 1.25;
+}
+.wp-caption-text {
+  margin-top: .75rem;
 }
 .exbold {
   font-weight: 800;
@@ -373,6 +376,13 @@ h3,
   display: grid;
   flex-grow: 1;
   gap: 1.875rem;
+}
+.twocol-side .has-hl a {
+  font-weight: 800;
+  color: var(--primary);
+}
+.twocol-side .has-hl + p {
+  margin-top: .5rem;
 }
 .twocol-main {
   display: grid;

@@ -13,8 +13,36 @@
 ?>
 <div class="twocol">
 	<div class="twocol-side">
+		<div>
 		<h1><?= wp_kses_post( $title ); ?></h1>
 <?php
+
+			$blogCats = get_the_terms( get_the_ID(), 'categories' );
+			if ( $blogCats ) {
+
+?>
+			<p class="has-hl">
+<?php
+
+				foreach ( $blogCats as $blogCat ) {
+
+?>
+			<a href="<?= add_query_arg( array( 'categories' => $blogCat->slug ), get_permalink( get_page_by_path( 'blog' ) ) ); ?>"><?= esc_html( $blogCat->name ); ?></a>
+<?php
+
+				}
+
+?>
+			</p>
+<?php
+
+			}
+
+?>
+			<p><?= get_the_date( get_option( 'date_format' ) ); ?></p>
+		</div>
+<?php
+
 
 			if ( have_rows( 'sidebar_blocks' ) ) {
 				while ( have_rows( 'sidebar_blocks' ) ) { the_row();
@@ -26,6 +54,7 @@
 	</div>
 	<div class="twocol-main">
 		<div class="mainplain">
+			<!-- <p><?= get_the_date( get_option( 'date_format' ) ); ?></p> -->
 <?php
 
 			the_content();
