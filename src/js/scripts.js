@@ -119,10 +119,6 @@
       return;
     }
 
-    if (!window.matchMedia('(hover: hover)').matches) {
-      return;
-    }
-
     const navmenu = document.querySelector('.sidenav'),
       submenus = navmenu.querySelectorAll('.sub-menu'),
       currentMenuLi = navmenu.querySelector('.current-menu-item'),

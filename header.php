@@ -14,6 +14,14 @@
 	wp_head();
 
 ?>
+
+	<script>
+		// in case any of the links and scripts fail
+		setTimeout(function() {
+			document.body.style.visibility = 'visible';
+			document.body.style.opacity = '1';
+		}, 1500);
+	</script>
 </head>
 <body <?php body_class(); ?> tabindex="-1" style="visibility: hidden; opacity: 0;">
 <?php

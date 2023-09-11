@@ -12,17 +12,23 @@
 
 	global $wp_query;
 
-	$thisPage		= get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
-	$firstResult	= ( ( $thisPage - 1 ) * 20 ) + 1;
-	$lastResult		= ( $thisPage * 20 ) > $wp_query->found_posts ? $wp_query->found_posts : ( $thisPage * 20 );
+	if ( $wp_query->found_posts ) {
+
+    $thisPage		= get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
+    $firstResult	= ( ( $thisPage - 1 ) * 20 ) + 1;
+    $lastResult		= ( $thisPage * 20 ) > $wp_query->found_posts ? $wp_query->found_posts : ( $thisPage * 20 );
+
+		$resultsStr = $firstResult . ' to ' . $lastResult . ' of ' . $wp_query->found_posts . ' ' . ngettext( 'result', 'results', $wp_query->found_posts );
+
+	} else {
+		$resultsStr = '0 results';
+	}
 
 
 ?>
 		<div class="search-head">
 			<p>Search results for “<?= esc_html( get_search_query() ); ?>”</p>
-			<?php if ($wp_query->found_posts) { ?>
-			<p><?= $firstResult . ' to ' . $lastResult . ' of ' . $wp_query->found_posts . ' ' . ngettext( 'result', 'results', $wp_query->found_posts ); ?></p>
-			<?php } ?>
+			<p><?= $resultsStr; ?></p>
 		</div>
 <?php
 
