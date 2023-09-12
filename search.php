@@ -38,7 +38,37 @@
 ?>
 		<article class="search-card pb">
 			<a href="<?= esc_url( get_permalink() ); ?>"><?= esc_html( get_the_title() ); ?></a>
-			<div><?= get_the_excerpt(); ?></div>
+			
+			
+			   <?php 
+				// if the post/page has no excerpt, get_the_excerpt returns an empty string and thus an empty div
+				// so check that the exceprt exists	   
+				if(get_the_excerpt() ) { 
+				
+				?>
+			   
+				<div><?= the_excerpt(); ?></div>
+			  <?php 
+			    }  
+			
+			// if there's no excerpt, check the ACF fields for a "content" block and give me the first 250 words with an ellipses at the end
+			if ( have_rows( 'main_blocks' ) ) {
+				while ( have_rows( 'main_blocks' ) ) { the_row();
+				
+					if (in_array('content', get_row() )) { 
+						//$format_value = false gets rid of the paragraph formatting so the excerpt matches the other excerpt formatting
+						$text = wp_kses_post( get_sub_field( 'content' , $format_value = false) ); 	
+						$truncated_text = substr($text, 0, 250);
+						$last_space = strrpos($truncated_text, " ");
+						$truncated_text = substr($truncated_text, 0, $last_space);
+						$truncated_text .= "...";
+
+						?><div><?= $truncated_text; ?></div>
+						<?php
+					}
+				}
+			}
+			?>
 		</article>
 <?php
 
