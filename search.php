@@ -52,23 +52,31 @@
 			    }  
 			
 			// if there's no excerpt, check the ACF fields for a "content" block and give me the first 250 words with an ellipses at the end
-			if ( have_rows( 'main_blocks' ) ) {
-				while ( have_rows( 'main_blocks' ) ) { the_row();
-				
-					if (in_array('content', get_row() )) { 
+			if ( have_rows( 'main_blocks' ) ){
+				$i = 0;
+				while ( have_rows( 'main_blocks' ) ){ the_row();
+					
+				if (get_row_layout() == 'content' && $i == 0) {
+					$i++;	
 						//$format_value = false gets rid of the paragraph formatting so the excerpt matches the other excerpt formatting
 						$text = wp_kses_post( get_sub_field( 'content' , $format_value = false) ); 	
-						$truncated_text = substr($text, 0, 250);
-						$last_space = strrpos($truncated_text, " ");
-						$truncated_text = substr($truncated_text, 0, $last_space);
-						$truncated_text .= "...";
+						if (strlen($text) > 250) {
+						$text = substr($text, 0, 250);
+						$last_space = strrpos($text, " ");
+						$text = substr($text, 0, $last_space);
+						$text .= "...";
+						}
 
-						?><div><?= $truncated_text; ?></div>
-						<?php
-					}
+						
+					?><div><?= $text; ?></div>
+					
+					<?php
+				
 				}
 			}
-			?>
+		}
+		?>
+				
 		</article>
 <?php
 
