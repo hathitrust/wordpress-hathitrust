@@ -72,7 +72,7 @@
 
 
 								
-							?><div><?= $content_excerpt; ?></div>
+							?><div class="content-excerpt"><?= $content_excerpt; ?></div>
 							
 							<?php
 						
