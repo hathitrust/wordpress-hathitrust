@@ -49,7 +49,7 @@
 			   
 				<div><?= the_excerpt(); ?></div>
 				<?php 
-			    }  
+			    } else {  
 			
 				// if there's no excerpt, check the ACF fields for the first "content" block and give me the first 250 words with an ellipses at the end
 				if ( have_rows( 'main_blocks' ) ){
@@ -58,7 +58,8 @@
 						
 						if (get_row_layout() == 'content' && $i == 0) {
 							$i++;	
-								$text = wp_kses_post( get_sub_field( 'content') ); 	
+								$text = wp_kses_post( get_sub_field( 'content', false) ); 	
+								var_dump($text);
 								if (strlen($text) > 250) {
 									$truncated_text = substr($text, 0, 250);
 									$last_space = strrpos($truncated_text, " ");
@@ -79,6 +80,7 @@
 						}
 					}
 				}
+			}
 				?>
 				
 		</article>
