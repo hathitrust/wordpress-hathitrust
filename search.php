@@ -58,7 +58,8 @@
 						
 						if (get_row_layout() == 'content' && $i == 0) {
 							$i++;	
-								$text = wp_kses_post( get_sub_field( 'content', false) ); 	
+								$text = wp_kses_post( get_sub_field( 'content') ); 	
+								$text = strip_tags($text);
 								if (strlen($text) > 250) {
 									$truncated_text = substr($text, 0, 250);
 									$last_space = strrpos($truncated_text, " ");
