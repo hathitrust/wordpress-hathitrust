@@ -38,7 +38,7 @@
 
 		wp_enqueue_style( 'site-fonts', get_template_directory_uri() . '/fonts.min.css', NULL, filemtime( get_template_directory() . '/fonts.css' ) );
 		if ( 'local' === wp_get_environment_type() ) {
-			wp_enqueue_style( 'firebird-styles', 'https://hathitrust-firebird-common.netlify.app/assets/main.css');
+			wp_enqueue_style( 'firebird-styles', 'https://hathitrust-firebird-common.netlify.app/assets/index.css');
 			wp_enqueue_style( 'site-styles', get_template_directory_uri() . '/src/css/style.css', array( 'site-fonts', 'firebird-styles' ), filemtime( get_template_directory() . '/src/css/style.css' ) );
 		} else {
 			wp_enqueue_style( 'firebird-styles', $firebird_manifest['stylesheet']);
@@ -55,7 +55,7 @@
 		if ( 'local' === wp_get_environment_type() ) {
 			// if you need your local firebird
 			// wp_enqueue_script( 'firebird-scripts', '//localhost:5173/js/main.js', array(), false, false);
-			wp_enqueue_script( 'firebird-scripts', 'https://hathitrust-firebird-common.netlify.app/assets/main.js', array(), false, true);
+			wp_enqueue_script( 'firebird-scripts', 'https://hathitrust-firebird-common.netlify.app/assets/index.js', array(), false, true);
 			wp_enqueue_script( 'site-scripts', get_template_directory_uri() . '/src/js/scripts.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/scripts.js' ), TRUE );
 		} else {
 		//need min version of firebird
@@ -448,6 +448,21 @@
 			// echo "<tr><td><a href='https://www.hathitrust.org/sites/www.hathitrust.org/files/hathifiles/".$value->fileName."'>".$value->fileName."</a></td><td>".date('M d, Y', $value->lastModified)."</td><td>".$value->fileSize."</td></tr>";
 			echo "<tr><td><a href='".$linkpath.$value->fileName."'>".$value->fileName."</a></td><td>".date('M d, Y', $value->lastModified)."</td><td>".$value->fileSize."</td></tr>";
 		}
+	}
+
+	//truncate text, default character limit is 250
+	//used in search.php for ACF content excerpts
+	function truncate($text, $length = 250) {
+
+		$text = strip_tags($text);
+
+		if (strlen($text) <= $length) {
+			return $text;
+		}
+		$text = substr($text, 0, $length);
+		$text = substr($text, 0, strrpos($text, " "));
+		$text .= "...";
+		return $text;
 	}
 
 	
