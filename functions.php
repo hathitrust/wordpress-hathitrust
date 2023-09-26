@@ -450,4 +450,19 @@
 		}
 	}
 
+	//truncate text, default character limit is 250
+	//used in search.php for ACF content excerpts
+	function truncate($text, $length = 250) {
+
+		$text = strip_tags($text);
+
+		if (strlen($text) <= $length) {
+			return $text;
+		}
+		$text = substr($text, 0, $length);
+		$text = substr($text, 0, strrpos($text, " "));
+		$text .= "...";
+		return $text;
+	}
+
 	
