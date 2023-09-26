@@ -38,7 +38,37 @@
 ?>
 		<article class="search-card pb">
 			<a href="<?= esc_url( get_permalink() ); ?>"><?= esc_html( get_the_title() ); ?></a>
-			<div><?= get_the_excerpt(); ?></div>
+			
+			
+			   <?php 
+				// if the post/page has no excerpt, get_the_excerpt returns an empty string and thus an empty div
+				// so check that the exceprt exists	   
+				if(get_the_excerpt() ) { 
+				
+				?>
+			   
+				<div><?= the_excerpt(); ?></div>
+				<?php 
+			    } else {  
+			
+				// check the ACF fields for the first "content" block and return the first 250 characters with an ellipses at the end
+				if ( have_rows( 'main_blocks' ) ){
+					$i = 0;
+					while ( have_rows( 'main_blocks' ) ){ the_row();
+						
+						if (get_row_layout() == 'content' && $i == 0) {
+							$i++;	
+															
+							?><div class="content-excerpt"><p><?= truncate(wp_kses_post( get_sub_field('content'))); ?></p></div>
+							
+							<?php
+						
+						}
+					}
+				}
+			}
+				?>
+				
 		</article>
 <?php
 
