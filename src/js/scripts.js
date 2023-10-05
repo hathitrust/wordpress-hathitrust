@@ -39,18 +39,8 @@
       // phire originally used
       // el.parentElement.getBoundingClientRect().left + window.pageXOffset
       // el.parentElement.getBoundingClientRect().top + window.pageYOffset
-      navmenu.style.setProperty(
-        '--left',
-        `${
-          el.parentElement.offsetLeft
-        }px`
-      );
-      navmenu.style.setProperty(
-        '--top',
-        `${
-          el.parentElement.offsetTop
-        }px`
-      );
+      navmenu.style.setProperty('--left', `${el.parentElement.offsetLeft}px`);
+      navmenu.style.setProperty('--top', `${el.parentElement.offsetTop}px`);
       navmenu.style.setProperty('--width', `${hoverWidth}px`);
       navmenu.style.setProperty('--height', `${hoverHeight}px`);
     }
@@ -235,10 +225,11 @@
 
       slug = el.textContent
         .replace(/ /g, '-')
-        .replace(/[^A-Za-z0-9-]/g, '')
+        .replace(/\./g, '_')
+        .replace(/[^A-Za-z0-9-_]/g, '')
         .toLowerCase();
 
-      if (document.querySelector(`#${slug}`)) {
+      if (document.querySelector(`[id="${slug}"]`)) {
         return;
       }
 
@@ -246,8 +237,8 @@
     });
 
     sj.addEventListener('submit', function (evt) {
-      const sectionID = `#${sj.querySelector('#sj').value}`,
-        target = document.querySelector(sectionID),
+      const sectionID = `${sj.querySelector('#sj').value}`,
+        target = document.querySelector(`[id="${sectionID}"]`),
         pageURL = new URL(document.URL);
 
       evt.preventDefault();
