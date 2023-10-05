@@ -171,12 +171,13 @@ h3,
 .bold {
   font-weight: 700;
 }
-.caption, .wp-caption-text {
-  font-size: .75rem;
+.caption,
+.wp-caption-text {
+  font-size: 0.75rem;
   line-height: 1.25;
 }
 .wp-caption-text {
-  margin-top: .75rem;
+  margin-top: 0.75rem;
 }
 .exbold {
   font-weight: 800;
@@ -382,7 +383,7 @@ h3,
   color: var(--primary);
 }
 .twocol-side .has-hl + p {
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 .twocol-main {
   display: grid;
@@ -613,8 +614,11 @@ h3,
 }
 .mainplain p img:only-child {
   display: block;
-  margin: 1.5rem auto;
+  margin: 1.5rem 0;
   border-radius: 0.375rem;
+}
+.mainplain p img.aligncenter {
+  margin: 1.5rem auto;
 }
 .mainplain a:not(.btn, .link-arrow):visited {
   color: var(--secondary);
@@ -738,7 +742,7 @@ h3,
   margin-top: 2rem;
 }
 .pb.widget-container h2 {
-  margin-top:.25rem;
+  margin-top: 0.25rem;
 }
 
 /* cards */
