@@ -52,11 +52,10 @@
 			wp_enqueue_style( 'home-styles', get_template_directory_uri() . '/dist/css/home.min.css', array( 'site-fonts', 'site-styles', 'firebird-styles' ), filemtime( get_template_directory() . '/dist/css/home.min.css' ) );
 		}
 
-		if (wp_get_environment_type() !== ('local' || 'production' )) {
+		if (wp_get_environment_type() === ('development' || 'staging' )) {
 			wp_enqueue_script( 'testing-matomo-script', get_template_directory_uri() . '/src/js/testing-matomo.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/testing-matomo.js' ));
-		} else if (wp_get_environment_type() == 'local') {
-			return;
-		} else {
+		} 
+		if (wp_get_environment_type() === 'production') {
 			wp_enqueue_script( 'matomo-script', get_template_directory_uri() . '/src/js/matomo.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/matomo.js' ));
 		}
 
