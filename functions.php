@@ -21,6 +21,7 @@
 
 	/**
 	 *  Enqueues the global styles and scripts.
+	 *  Generally, use minimized styles/scripts in prod and unminimized files for local development.
 	 */
 	function pg_enqueue_site_files() {
 
@@ -36,39 +37,46 @@
 			$firebird_manifest['script'] = '/common/firebird/dist/' . $firebird_config['index.html']['file'];
 		}
 
+		/*
+		STYLES
+		*/ 
+
+		/* fonts, firebird, theme styles */
 		wp_enqueue_style( 'site-fonts', get_template_directory_uri() . '/fonts.min.css', NULL, filemtime( get_template_directory() . '/fonts.css' ) );
+		wp_enqueue_style( 'firebird-styles', $firebird_manifest['stylesheet']);
 		if ( 'local' === wp_get_environment_type() ) {
-			wp_enqueue_style( 'firebird-styles', 'https://hathitrust-firebird-common.netlify.app/assets/index.css');
 			wp_enqueue_style( 'site-styles', get_template_directory_uri() . '/src/css/style.css', array( 'site-fonts', 'firebird-styles' ), filemtime( get_template_directory() . '/src/css/style.css' ) );
 		} else {
-			wp_enqueue_style( 'firebird-styles', $firebird_manifest['stylesheet']);
 			wp_enqueue_style( 'site-styles', get_template_directory_uri() . '/dist/css/style.min.css', array( 'site-fonts', 'firebird-styles' ), filemtime( get_template_directory() . '/dist/css/style.min.css' ) );
 		}	
 
-
+		/* homepage styles */
 		if ( is_front_page() && 'local' === wp_get_environment_type() ) {
 			wp_enqueue_style( 'home-styles', get_template_directory_uri() . '/src/css/home.css', array( 'site-fonts', 'site-styles', 'firebird-styles'), filemtime( get_template_directory() . '/src/css/home.css' ) );
 		} else if ( is_front_page() ) {
 			wp_enqueue_style( 'home-styles', get_template_directory_uri() . '/dist/css/home.min.css', array( 'site-fonts', 'site-styles', 'firebird-styles' ), filemtime( get_template_directory() . '/dist/css/home.min.css' ) );
 		}
 
-		if (wp_get_environment_type() === ('development' || 'staging' )) {
+		/* 
+		SCRIPTS
+		*/
+
+		/* matomo */
+		if ( 'development' === wp_get_environment_type() || 'staging' === wp_get_environment_type() ) {
 			wp_enqueue_script( 'testing-matomo-script', get_template_directory_uri() . '/src/js/testing-matomo.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/testing-matomo.js' ));
 		} 
-		if (wp_get_environment_type() === 'production') {
+		if ( 'production' === wp_get_environment_type() ) {
 			wp_enqueue_script( 'matomo-script', get_template_directory_uri() . '/src/js/matomo.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/matomo.js' ));
 		}
 
+		/* theme and firebird scripts */
+		  wp_enqueue_script('firebird-scripts', $firebird_manifest['script'], array(), false, false);
 		if ( 'local' === wp_get_environment_type() ) {
 			// if you need your local firebird
 			// wp_enqueue_script( 'firebird-scripts', '//localhost:5173/js/main.js', array(), false, false);
-			wp_enqueue_script( 'firebird-scripts', 'https://hathitrust-firebird-common.netlify.app/assets/index.js', array(), false, true);
 			wp_enqueue_script( 'site-scripts', get_template_directory_uri() . '/src/js/scripts.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/scripts.js' ), TRUE );
 		} else {
-		//need min version of firebird
-		// wp_enqueue_script( 'firebird-scripts', 'https://hathitrust-firebird-common.netlify.app/assets/main.js', array(), false, false);
 
-		  wp_enqueue_script('firebird-scripts', $firebird_manifest['script'], array(), false, false);
 			wp_enqueue_script( 'site-scripts', get_template_directory_uri() . '/dist/js/scripts.min.js', array('firebird-scripts'), filemtime( get_template_directory() . '/dist/js/scripts.min.js' ), TRUE );
 			// hotjar script is added through firebird-common + ping
 		}
