@@ -52,7 +52,7 @@
                 <button id="srch" type="submit">Find</button>
               </div>
               <div style="display:flex;align-items:center;margin-block-start:3px;gap:3px;">
-                <input type="checkbox" value="ft" name="lmt" id="ls_fullonly" checked="yes" />
+                <input type="checkbox" value="ft" name="lmt" id="ls_fullonly" checked="checked" />
                 <label for="ls_fullonly" style="position: relative; font-size: 75%;">Full view only</label>
                 <input type="hidden" value="srchls" name="a"/>
               </div>

@@ -54,7 +54,7 @@
               </div>
               <div style="display:flex;align-items:center;margin-block-start:3px;gap:3px;">
                 <input type="hidden" name="sethtftonly" value="true"/>
-                <input type="checkbox" name="htftonly" value="true" id="fullonly" checked="yes" />
+                <input type="checkbox" name="htftonly" value="true" id="fullonly" checked="checked" />
                 <label for="fullonly" style="position: relative; font-size: 75%;">Full view only</label>
               </div>
         </form>
