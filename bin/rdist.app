@@ -15,7 +15,7 @@ NASICTC = ( nas-ictc.umdl.umich.edu )
 # File Directories to be released (source) and (destination)
 #
 APP_src  = ( /htapps/test.www/wordpress-hathitrust )
-APP_dest = ( /htapps/wordpress.www/wordpress-hathitrust )
+APP_dest = ( /htapps/www/wordpress-hathitrust )
 
 #
 # Release instructions
