@@ -30,11 +30,20 @@
 			'script' => '//hathitrust-firebird-common.netlify.app/assets/index.js'
 		);
 		$BABEL_ROOT = str_replace('www', 'babel', $_SERVER['DOCUMENT_ROOT']);
+
 		$firebird_manifest_filename = $BABEL_ROOT . '/firebird-common/dist/manifest.json';
+
 		if ( file_exists(($firebird_manifest_filename)) ) {
 			$firebird_config = json_decode(file_get_contents($firebird_manifest_filename), true);
+
 			$firebird_manifest['stylesheet'] = '/common/firebird/dist/' . $firebird_config['index.css']['file'];
 			$firebird_manifest['script'] = '/common/firebird/dist/' . $firebird_config['index.html']['file'];
+
+			//firebird-common installed and built at wp install level
+			if ('local' === wp_get_environment_type()) {
+				$firebird_manifest['stylesheet'] = '/firebird-common/dist/' . $firebird_config['index.css']['file'];
+				$firebird_manifest['script'] =  '/firebird-common/dist/' . $firebird_config['index.html']['file'];
+			}
 		}
 
 		/*
