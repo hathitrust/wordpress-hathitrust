@@ -120,7 +120,11 @@
 
 ?>
 	<div class="home-pres">
-		<iframe loading="lazy" width="508" height="285" src="<?= esc_url( 'https://www.youtube-nocookie.com/embed/' . $pres['youtube']['video_id'] . '?modestbranding=1&rel=0&enablejsapi=1' ); ?>" title="<?= esc_attr( $pres['youtube']['video_title'] ); ?>"></iframe>
+		<div class="yt-no-consent hpres-content">
+			<p>Some content here explaining about YouTube tracking.</p>
+			<button onclick="handleMarketingConsent()" class="btn">accept tracking</button>
+		</div>
+		<iframe loading="lazy" width="508" height="285" data-cookieblock-src="<?= esc_url( 'https://www.youtube-nocookie.com/embed/' . $pres['youtube']['video_id'] . '?modestbranding=1&rel=0&enablejsapi=1' ); ?>" title="<?= esc_attr( $pres['youtube']['video_title'] ); ?>"></iframe>
 		<div class="hpres-content">
 			<a href="<?= esc_url( $pres['cta']['url'] ); ?>" class="allcaps link-arrow"><span><?= esc_html( $pres['cta']['label'] ); ?></span></a>
 			<div class="hpres-copy"><?= wp_kses_post( $pres['content'] ); ?></div>

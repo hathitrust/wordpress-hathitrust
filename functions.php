@@ -70,13 +70,7 @@
 		SCRIPTS
 		*/
 
-		/* matomo */
-		if ( 'development' === wp_get_environment_type() || 'staging' === wp_get_environment_type() ) {
-			wp_enqueue_script( 'testing-matomo-script', get_template_directory_uri() . '/src/js/testing-matomo.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/testing-matomo.js' ));
-		} 
-		if ( 'production' === wp_get_environment_type() ) {
-			wp_enqueue_script( 'matomo-script', get_template_directory_uri() . '/src/js/matomo.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/matomo.js' ));
-		}
+		
 
 		/* theme and firebird scripts */
 		  wp_enqueue_script('firebird-scripts', $firebird_manifest['script'], array(), false, false);
@@ -84,10 +78,19 @@
 			// if you need your local firebird
 			// wp_enqueue_script( 'firebird-scripts', '//localhost:5173/js/main.js', array(), false, false);
 			wp_enqueue_script( 'site-scripts', get_template_directory_uri() . '/src/js/scripts.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/scripts.js' ), TRUE );
+			wp_enqueue_script( 'cookie-scripts', get_template_directory_uri() . '/src/js/cookies.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/cookies.js' ), TRUE );
 		} else {
-
 			wp_enqueue_script( 'site-scripts', get_template_directory_uri() . '/dist/js/scripts.min.js', array('firebird-scripts'), filemtime( get_template_directory() . '/dist/js/scripts.min.js' ), TRUE );
+			wp_enqueue_script( 'cookie-scripts', get_template_directory_uri() . '/dist/js/cookies.min.js', array('firebird-scripts'), filemtime( get_template_directory() . '/dist/js/cookies.min.js' ), TRUE );
 			// hotjar script is added through firebird-common + ping
+		}
+
+		/* matomo */
+		if ( 'development' === wp_get_environment_type() || 'local' === wp_get_environment_type() || 'staging' === wp_get_environment_type() ) {
+			wp_enqueue_script( 'testing-matomo-script', get_template_directory_uri() . '/src/js/testing-matomo.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/testing-matomo.js' ), TRUE);
+		} 
+		if ( 'production' === wp_get_environment_type() ) {
+			wp_enqueue_script( 'matomo-script', get_template_directory_uri() . '/src/js/matomo.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/matomo.js' ), TRUE);
 		}
 
 	}

@@ -2,10 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 3.75rem 1.875rem;
-  margin-inline: max(
-    clamp(0.938rem, calc(0.268rem + 3.348vw), 1.875rem),
-    ((100% - 73.125rem) / 2)
-  );
+  margin-inline: max(clamp(0.938rem, calc(0.268rem + 3.348vw), 1.875rem), ((100% - 73.125rem) / 2));
 }
 .home-fatl,
 .home-about,
@@ -176,6 +173,9 @@
   width: 100%;
   height: auto;
 }
+.home-pres iframe[data-cookieblock-src] {
+  display: none;
+}
 .home-pres h2 {
   margin-top: 1rem;
   font-weight: 700;
@@ -317,6 +317,9 @@
     grid-area: 2 / 1;
     margin-top: 0;
   }
+  .habout-inner a:hover {
+    color: #fff;
+  }
   .habout-copy {
     grid-row: 1 / -1;
   }
@@ -358,8 +361,7 @@
     overflow-x: hidden;
     padding: 3.75rem 1.875rem;
     background-image: url('../../images/bghomepresentations.svg');
-    background-position: calc(100% + clamp(0.313rem, 1.389rem + -1.736vw, 0rem))
-      center;
+    background-position: calc(100% + clamp(0.313rem, 1.389rem + -1.736vw, 0rem)) center;
     background-repeat: no-repeat;
   }
   .home-pres > * {
