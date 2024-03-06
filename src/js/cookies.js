@@ -83,26 +83,11 @@ function loadMapEmbed() {
   let mapSrc = 'https://www.google.com/maps/d/embed?mid=1-TEZOo6q2UueZ3Gq_G6zWWWzUa0SuX3m&amp;ehbc=2E312F';
 
   map.style.display = 'block';
+  map.classList.remove('no-map');
   mapFrame.src = mapSrc;
 }
 
-function handleMarketingConsent() {
-  const expiration = new Date();
-  expiration.setMonth(expiration.getMonth() + 12);
-
-  HT = window.HT || {};
-
-  if (getCookie('HT-marketing-cookie-consent') === 'false') {
-    setCookie('HT-marketing-cookie-consent', 'true', expiration, '/', HT.cookies_domain, true);
-  }
-  loadYouTubeVideo();
-  loadMapEmbed();
-}
-
 function checkForCookies() {
-  // console.log('marketing', getCookie('HT-marketing-cookie-consent'));
-  // console.log('tracking', getCookie('HT-tracking-cookie-consent'));
-
   if (getCookie('HT-marketing-cookie-consent') === 'true') {
     loadYouTubeVideo();
     loadMapEmbed();
@@ -129,14 +114,22 @@ function checkForCookies() {
 //1.5 seconds seems to be long enough for the banner to be in the DOM
 setTimeout(() => {
   let cookieBanner = document.querySelector('.cookie-banner');
-  let cookieSettings = document.querySelectorAll('.settings-buttons button')[1];
-
   if (cookieBanner) {
     cookieBanner.addEventListener('click', checkForCookies);
   }
-  if (cookieSettings) {
-    cookieSettings.addEventListener('click', checkForCookies);
+}, 1500);
+
+//give footer/modal settings extra time
+setTimeout(() => {
+  let denyAll = document.getElementById('deny-all');
+  let allowSelected = document.getElementById('allow-selected');
+
+  if (denyAll) {
+    denyAll.addEventListener('click', checkForCookies);
   }
-}, 2000);
+  if (allowSelected) {
+    allowSelected.addEventListener('click', checkForCookies);
+  }
+}, 3000);
 
 checkForCookies();

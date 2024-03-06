@@ -832,6 +832,10 @@ h3,
 #member-map {
   display: none;
 }
+/* fix spacing on member-list page if map embed is display:none; */
+.mainplain:has(#member-map.no-map) {
+  position: absolute;
+}
 
 @container blogcards (min-width: 31.25em) {
   /* 500px */

@@ -120,9 +120,13 @@
 
 ?>
 	<div class="home-pres">
-		<div class="yt-no-consent hpres-content">
-			<p>Some content here explaining about YouTube tracking.</p>
-			<button onclick="handleMarketingConsent()" class="btn">accept tracking</button>
+		<div class="yt-no-consent pres-card">
+				<img src="/wp-content/themes/wordpress-hathitrust/images/yt/never_a_dull_moment.png" />
+				<div class="d-flex align-items-center gap-2">
+					<i class="fa-brands fa-youtube fa-fw fa-xl" aria-hidden="true"></i><a target="_blank" rel="noopener" class="text-decoration-underline fw-bold d-inline" href="https://www.youtube.com/watch?v=<?= $pres['youtube']['video_id'] ?>">Video: <?= esc_attr( $pres['youtube']['video_title'] ); ?><i class="fa-solid fa-arrow-up-right-from-square fa-fw ps-2" aria-hidden="true"></i></a>
+				</div>
+				<p class="small">This YouTube video has been disabled by your cookie selection. You can watch this video on YouTube: <a target="_blank" rel="noopener" class="text-decoration-underline" href="https://www.youtube.com/watch?v=<?= $pres['youtube']['video_id'] ?>"><?= esc_attr( $pres['youtube']['video_title'] ); ?></a><span class="visually-hidden">(opens in a new tab)</span>.</p>
+			<!-- <button onclick="handleMarketingConsent()" class="btn">accept tracking</button> -->
 		</div>
 		<iframe loading="lazy" width="508" height="285" data-cookieblock-src="<?= esc_url( 'https://www.youtube-nocookie.com/embed/' . $pres['youtube']['video_id'] . '?modestbranding=1&rel=0&enablejsapi=1' ); ?>" title="<?= esc_attr( $pres['youtube']['video_title'] ); ?>"></iframe>
 		<div class="hpres-content">
