@@ -7,6 +7,7 @@ let ctx = await esbuild.context({
     'src/css/style.css',
     'src/css/home.css',
     'src/css/editor-style.css',
+    'src/js/cookies.js',
   ],
   bundle: false,
   minify: true,

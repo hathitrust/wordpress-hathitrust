@@ -131,10 +131,7 @@
       submenuToggler.setAttribute('aria-controls', `submenu${i}`);
       submenuToggler.setAttribute('aria-expanded', 'false');
       submenuToggler.setAttribute('aria-label', 'Show');
-      submenuToggler.setAttribute(
-        'aria-labelledby',
-        `flyoutbtn${i} submenulink${i}`
-      );
+      submenuToggler.setAttribute('aria-labelledby', `flyoutbtn${i} submenulink${i}`);
       submenuToggler.innerHTML =
         '<svg width="9" height="5" aria-hidden="true"><path d="m8.266 1.64-2.977 3a.826.826 0 0 1-.539.21.742.742 0 0 1-.54-.21l-2.976-3a.726.726 0 0 1-.187-.82.768.768 0 0 1 .703-.47h5.977c.304 0 .562.188.68.47.116.28.07.609-.141.82Z" fill="currentColor"></svg>';
       submenuToggler.addEventListener('click', toggleSidebarNavigationSubMenu);
@@ -151,9 +148,7 @@
 
       while (parentMenuItem) {
         parentMenuItem.querySelector('.submenutoggler').click();
-        parentMenuItem = parentMenuItem.parentElement.closest(
-          '.menu-item-has-children'
-        );
+        parentMenuItem = parentMenuItem.parentElement.closest('.menu-item-has-children');
       }
     }
 
@@ -327,8 +322,7 @@
   /* INIT */
   /* **** */
 
-  document.documentElement.className =
-    document.documentElement.className.replace(/\bno-js\b/, 'js');
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/, 'js');
 
   if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
     document.documentElement.classList.add('can-sscroll');

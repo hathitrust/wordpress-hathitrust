@@ -29,6 +29,11 @@
 	wp_body_open();
 
 ?>
+  <?php
+
+	get_template_part( 'inc/banner-cookies' );
+
+	?>
 	<div id="maindocument">
 <?php
 
