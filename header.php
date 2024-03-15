@@ -32,7 +32,7 @@
   <?php
 
 	get_template_part( 'inc/banner-cookies' );
-
+	get_template_part( 'inc/skiplinks' );
 	?>
 	<div id="maindocument">
 <?php

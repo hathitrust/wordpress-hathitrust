@@ -52,7 +52,7 @@
 
 ?>
 	</div>
-	<div class="twocol-main">
+	<div class="twocol-main" id="page-content">
 		<div class="mainplain">
 			<!-- <p><?= get_the_date( get_option( 'date_format' ) ); ?></p> -->
 <?php

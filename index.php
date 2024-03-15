@@ -24,7 +24,7 @@
 
 ?>
 	</div>
-	<div class="twocol-main">
+	<div class="twocol-main" id="page-content">
 <?php
 
 			# generally not used, but present for code injection

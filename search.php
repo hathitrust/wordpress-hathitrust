@@ -7,7 +7,7 @@
 	<div class="twocol-side">
 		<h1>Search Results</h1>
 	</div>
-	<div class="twocol-main">
+	<div class="twocol-main" id="page-content">
 <?php
 
 	global $wp_query;

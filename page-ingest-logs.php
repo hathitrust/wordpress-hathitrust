@@ -25,7 +25,7 @@
 
     ?>
 	</div>
-	<div class="twocol-main">
+	<div class="twocol-main" id="page-content">
 		<div class="mainplain">
         <?php
 
