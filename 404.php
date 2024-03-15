@@ -12,7 +12,7 @@
 
 ?>
 	</div>
-	<div class="twocol-main"></div>
+	<div class="twocol-main" id="page-content"></div>
 </div>
 <?php
 
