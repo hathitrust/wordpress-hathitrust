@@ -27,7 +27,7 @@
 
 ?>
 	</div>
-	<div class="twocol-main">
+	<div class="twocol-main" id="page-content">
 		<div class="post-cards blog-cards">
 <?php
 
