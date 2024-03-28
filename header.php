@@ -38,6 +38,7 @@
 <?php
 
 	get_template_part( 'inc/client-header' );
+	get_template_part( 'inc/banner-alert' );
 
 ?>
 		<main id="content" class="main" tabindex="-1">
