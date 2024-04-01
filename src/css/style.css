@@ -308,14 +308,25 @@ h3,
 #maindocument {
   min-height: 100%;
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-areas: 'header' 'banner' 'main' 'footer';
 }
 .main {
+  grid-area: main;
   display: grid;
   /* grid-template: auto auto / 1fr; */
   grid-template: auto 1fr / auto;
   padding-block: 0.75rem var(--pb);
   --pb: 2.5rem;
+}
+hathi-website-header {
+  grid-area: header;
+}
+hathi-alert-banner {
+  grid-area: banner;
+}
+hathi-website-footer {
+  grid-area: footer;
 }
 .error404 .main {
   padding-bottom: 0;
