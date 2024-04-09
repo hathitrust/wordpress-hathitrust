@@ -324,6 +324,7 @@ hathi-website-header {
 }
 hathi-alert-banner {
   grid-area: banner;
+  display: none;
 }
 hathi-website-footer {
   grid-area: footer;
