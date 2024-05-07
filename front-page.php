@@ -121,7 +121,7 @@
 ?>
 	<div class="home-pres">
 		<div class="yt-no-consent pres-card">
-				<img src="/wp-content/themes/wordpress-hathitrust/images/yt/new_website.jpg" />
+				<img src="/wp-content/themes/wordpress-hathitrust/images/yt/new_website.jpg" alt=""/>
 				<div class="d-flex align-items-center gap-2">
 					<i class="fa-brands fa-youtube fa-fw fa-xl" aria-hidden="true"></i><a target="_blank" rel="noopener" class="text-decoration-underline fw-bold d-inline" href="https://www.youtube.com/watch?v=<?= $pres['youtube']['video_id'] ?>">Video: <?= esc_attr( $pres['youtube']['video_title'] ); ?><i class="fa-solid fa-arrow-up-right-from-square fa-fw ps-2" aria-hidden="true"></i></a>
 				</div>
