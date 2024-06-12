@@ -14,11 +14,11 @@
 
 ?>
 <div class="strategic-vision-banner" style="grid-area:2/1">
-    <div style="width:270px">
+    <div class="sv-banner-inner">
         <p class="text-white">Updated May 2024</p>
-        <h2 class="text-white bold">HathiTrust Strategic Vision</h2>
+        <h2 class="text-white bold d-flex flex-column">HathiTrust <span>Strategic Vision</span></h2>
+            <a class="btn btn-outline-light" href="https://www.hathitrust.org/wp-content/uploads/2024/03/HathiTrust-Strategic-Vision-2024.pdf">Download the Strategic Vision <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
     </div>
-    <a class="btn btn-outline-light" href="https://www.hathitrust.org/wp-content/uploads/2024/03/HathiTrust-Strategic-Vision-2024.pdf">Download the Strategic Vision <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
 </div>
 <div class="twocol" style="grid-area:3/1">
     <div class="twocol-side">
@@ -35,11 +35,10 @@
 	</div>
 	<div class="twocol-main" id="page-content">
 		<div class="mainplain" id="strategic-vision">
-            <h2 class="pb-4" id="intro">Intro</h2>
+            <h2 class="pb-4" id="from-the-executive-director">From the Executive Director</h2>
             <div class="pb">
                 <div class="pb-contents">
-                    <p class="mb-3">We are pleased to introduce HathiTrust's new Strategic Vision, created through an intensive, year-long effort to imagine HathiTrust’s future. Fifteen years after our launch, this Strategic Vision not only responds to the changed circumstances of our member libraries, the world, and HathiTrust itself, but builds on our existing strengths to outline critical and meaningful work over the next three to five years. The insights we've gleaned over the past year have led us to put renewed emphasis on our stewardship of the collection, the foundation on which HathiTrust was built.</p>
-                    <p class="mb-3">We are excited about this work, and we are thankful for all you continue to do for HathiTrust.</p>
+                    <p class="mb-3">We are pleased to introduce HathiTrust's new Strategic Vision, created through an intense year-long effort to imagine HathiTrust's future. Fifteen years after our launch, this strategic vision not only responds to the changed circumstances of our member libraries, the world and HathiTrust itself, but builds on our existing strengths to outline critical and meaningful work over the next three to five years. We are excited about this work and will continually share our progress on advancing our vision.</p>
                     <p class="exbold">— Mike Furlough, Executive Director</p>
                 </div>
             </div>
@@ -68,7 +67,7 @@
                     <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                     <div class="accordion-body">
                         <p>We will expand access to and increase use of copyrighted, open, and public domain works in the HathiTrust collection.</p>
-                        <p class="bold">Our Progress</p>
+                        <p class="bold">Objectives</p>
                         <ul>
                             <li>Investigate, analyze, and respond to the diversity of our usersr' needs and practices.</li>
                             <li>Expand the modes of lawful access to in-copyright works, in partnership with the wider community.</li>
@@ -88,7 +87,7 @@
                     <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
                     <div class="accordion-body">
                         <p>We will expand the volume and diversity of book and serial content in the HathiTrust collection.</p>
-                        <p class="bold">Our Progress</p>
+                        <p class="bold">Objectives</p>
                         <ul>
                             <li>Enable members to identify, digitize, preserve, and contribute their unique content to the collection—especially that of underrepresented and historically-marginalized voices and perspectives.</li>
                             <li>Invite organizations engaged in mass digitization of book and serial content, that are not currently members, to contribute and preserve their collections with HathiTrust.</li>
@@ -107,7 +106,7 @@
                     <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
                     <div class="accordion-body">
                         <p>We will expand access to and increase use of copyrighted, open, and public domain works in the HathiTrust collection.</p>
-                        <p class="bold">Our Progress</p>
+                        <p class="bold">Objectives</p>
                         <ul>
                             <li>Apply existing and emerging computational tools and methods in service of text and metadata improvement.</li>
                             <li>Actively manage and share bibliographic metadata entrusted to our care.</li>
@@ -125,7 +124,7 @@
                     <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
                     <div class="accordion-body">
                     <p>We will reinforce our technological and operational foundations to preserve and steward the HathiTrust collection responsibly, sustainably, and effectively.</p>
-                    <p class="bold">Our Progress</p>
+                    <p class="bold">Objectives</p>
                     <ul>
                         <li>Ensure resilience and sustainability of our preservation infrastructure by addressing technical debt in legacy systems.</li>
                         <li>Improve the search and discovery of all collections, in multiple languages.</li>
@@ -137,13 +136,7 @@
                     </div>
                 </div>
             </div>
-            <figure>
-                <picture>
-                    <source media="(max-width: 769px)" srcset="<?php echo get_template_directory_uri(); ?>/images/sv/HathiTrust_345x230.webp" type="image/webp">
-                    <source srcset="<?php echo get_template_directory_uri(); ?>/images/sv/HathiTrust_700x400.webp" type="image/webp">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/sv/HathiTrust_700x400.png" alt="" loading="lazy">
-                </picture>
-            </figure>
+            
             <h2 class="pb-4" id="creating-our-future">Creating Our Future</h2>
             <p>In its first 15 years, HathiTrust has collected, preserved, and provided lawful access to more than 18 million texts in more than 400 languages. Today we steward the single largest collection of digitized texts created by and for the academic community. HathiTrust depends on its members' digitization, organization, and contribution of their own collections, and assumes a responsibility to its members—and to the world—to preserve and make these texts as accessible as possible. Preservation remains the foundation upon which our ambitions to be a vital catalyst for emerging forms of research, teaching, and learning are based. HathiTrust continues to do this in bold and innovative ways that respect the rights of creators and publishers, and that reflect the diversity of voices and perspectives of the human record.</p>
             <p>HathiTrust provides services for the common good of its members and recognizes the power of its collective action to contribute to the greater public good. HathiTrust began in 2008 with 13 members, growing to 210 as of 2023. In 2019, the adoption of a tier-based membership system enabled a wider diversity of institutions to join, significantly increasing the number of smaller member organizations. HathiTrust members now represent a wider range of organizational abilities, resources, and needs than ever before. Although today a majority of members do not contribute collections for preservation, the entire membership values and supports HathiTrust's work to preserve collections for durable long-term access. Depending upon their capacities and abilities, our diverse membership supports HathiTrust in a variety of ways, such as contributions of staff time, deposits of collections, and through their financial support.</p>
@@ -172,37 +165,37 @@
             <div class="pbs">
                 <div class="pb">
                     <div class="pb-contents">
-                        <p class="h3">Trust</p>
+                        <h3 class="h3">Trust</h3>
                         <p>Trust is paramount, the basis of the preservation and stewardship mission we undertake on behalf of our community.</p>
                     </div>
                 </div>
                 <div class="pb">
                     <div class="pb-contents">
-                        <p class="h3">Access to knowledge and open inquiry</p>
+                        <h3 class="h3">Access to knowledge and open inquiry</h3>
                         <p>Access to knowledge and open inquiry are necessary for just societies and for the creation of new scholarship and research.</p>
                     </div>
                 </div>
                 <div class="pb">
                     <div class="pb-contents">
-                        <p class="h3">Equity, diversity, and inclusion</p>
+                        <h3 class="h3">Equity, diversity, and inclusion</h3>
                         <p>Equity, diversity, and inclusion promote justice, create communities that thrive, and advance collective knowledge and understanding.</p>
                     </div>
                 </div>
                 <div class="pb">
                     <div class="pb-contents">
-                        <p class="h3">Resilience</p>
+                        <h3 class="h3">Resilience</h3>
                         <p>Resilience, created through interdependent work, provides HathiTrust and the library community as a whole with flexibility and strength to address challenging opportunities in a changing system.</p>
                     </div>
                 </div>
                 <div class="pb">
                     <div class="pb-contents">
-                        <p class="h3">Constructive, meaningful engagement</p>
+                        <h3 class="h3">Constructive, meaningful engagement</h3>
                         <p>Constructive, meaningful engagement allows HathiTrust to benefit from the collective expertise of our colleagues, member staff, and users of HathiTrust.</p>
                     </div>
                 </div>
                 <div class="pb">
                     <div class="pb-contents">
-                        <p class="h3">Leadership</p>
+                        <h3 class="h3">Leadership</h3>
                         <p>Leadership that embodies both conviction and humility allows us to learn from the communities that constitute HathiTrust.</p>
                     </div>
                 </div>
@@ -216,14 +209,14 @@
                 <figcaption class="caption"><span class="bold">Image:</span> Lançon, Auguste André. <span class="ital">The life of an elephant.</span> London : Seeley and Co. Limited, 1909. Contributed by The Ohio State University.</figcaption>
             </figure>
             <h2 class="pb-4" id="#acknowledgements">Acknowledgements</h2>
-            <p>Librarians and staff at our member institutions participated throughout the process, providing a variety of perspectives in every phase. HathiTrust staff shared additional insight, as well as logistical support to the entire process. A group of strategic leaders representing the breadth and depth of the membership provided consistency and continuity throughout the project as the Strategic Visioning Task Force. We are indebted to each of them for the time, expertise, and commitment they dedicated to envisioning HathiTrust's future.</p>
+            <p class="sv-gap">Librarians and staff at our member institutions participated throughout the process, providing a variety of perspectives in every phase. HathiTrust staff shared additional insight, as well as logistical support to the entire process. A group of strategic leaders representing the breadth and depth of the membership provided consistency and continuity throughout the project as the Strategic Visioning Task Force. We are indebted to each of them for the time, expertise, and commitment they dedicated to envisioning HathiTrust's future.</p>
             <p>Hundreds of individuals from 140 different member libraries and peer organization participated in the following activities, the responses to which helped guide the creation of the vision.</p>
             <ul>
                 <li>62 1-hour interviews</li>
                 <li>267 responses to an online survey</li>
                 <li>2023 Fall Membership Meeting, with polls and VTF panel discussion of poll results</li>
                 <li>19 Strategic Visioning workshops:</li>
-                <ul>
+                <ul class="sv-gap">
                     <li>8 Workshops with the Visioning Task Force</li>
                     <li>7 Staff Workshops</li>
                     <li>1 Board Prioritization Workshop</li>
@@ -231,7 +224,7 @@
                     <li>2 Member Workshops (1 in GMT+ timezones to include international members)</li>
                 </ul>
             </ul>
-            <p>Review the complete <a href="/about/mission-history/strategic-visioning/process/">year-long process</a>. For more information or to share your thoughts on HathiTrust's future, please <a href="/contact">contact us</a>.</p>
+            <p class="sv-gap">Review the complete <a href="/about/mission-history/strategic-visioning/process/">year-long process</a>. For more information or to share your thoughts on HathiTrust's future, please <a href="/contact">contact us</a>.</p>
             <div class="pbs">
                 <div class="pb">
                     <div class="pb-contents">
@@ -246,7 +239,7 @@
                     </div>
                 </div>
             </div>
-            <h3 class="allcaps">HathiTrust Strategic Visioning Partners</h3>
+            <h3 class="allcaps sv-subheading">HathiTrust Strategic Visioning Partners</h3>
             <div class="pbs">
                 <div class="pb">
                     <div class="pb-contents">
@@ -260,6 +253,9 @@
                         <p><a href="https://www.athenaeum21.com/">Athenaeum21 (A21)</a></p>
                     </div>
                 </div>
+            </div>
+            <h3 class="allcaps sv-subheading">HathiTrust Strategic Visioning Task Force</h3>
+            <div class="pbs">
                 <div class="pb">
                     <div class="pb-contents">
                         <p class="h3">Theresa Byrd</p>
@@ -350,11 +346,10 @@
             </ul>
             <figure>
                 <picture>
-                    <source media="(max-width: 769px)" srcset="<?php echo get_template_directory_uri(); ?>/images/sv/Vision_345x230.webp" type="image/webp">
-                    <source srcset="<?php echo get_template_directory_uri(); ?>/images/sv/Vision_700x400.webp" type="image/webp">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/sv/Vision_700x400.png" alt="" loading="lazy">
+                    <source media="(max-width: 769px)" srcset="<?php echo get_template_directory_uri(); ?>/images/sv/HathiTrust_345x230.webp" type="image/webp">
+                    <source srcset="<?php echo get_template_directory_uri(); ?>/images/sv/HathiTrust_700x400.webp" type="image/webp">
+                    <img src="<?php echo get_template_directory_uri(); ?>/images/sv/HathiTrust_700x400.png" alt="" loading="lazy">
                 </picture>
-                <figcaption class="caption"><span class="bold">Image:</span> Eddy, Arthur Jerome. <span class="ital">Cubists and Post-impressionism.</span> Chicago, A. C. McClurg & Co., 1914. Contributed by Getty Research Institute.</figcaption>
             </figure>
             <h2 class="pb-4" id="decision-making-framework">Decision-Making Framework</h2>
             <p>We have also adopted a decision-making framework intended to help evaluate existing and new activities against our stated Mission, Vision, Values, and Strategic Directions. While our Strategic Vision guides the organization, this framework can help support decisions by the HathiTrust leadership, Board of Governors, and Staff. The framework is relevant for programs, services, and other initiatives and activities.</p>
