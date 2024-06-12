@@ -891,6 +891,13 @@ hathi-website-footer {
   padding: 0;
   margin-block: 2.5rem;
 }
+#strategic-vision ol > li {
+  padding-inline-start: 0.5rem;
+}
+
+#strategic-vision ol > li::marker {
+  font-weight: 700;
+}
 
 .strategic-vision-banner {
   margin-top: 2.625rem;
