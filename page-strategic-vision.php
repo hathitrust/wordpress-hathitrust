@@ -39,7 +39,7 @@
             <div class="pb">
                 <div class="pb-contents">
                     <p class="mb-3">We are pleased to introduce HathiTrust's new Strategic Vision, created through an intense year-long effort to imagine HathiTrust's future. Fifteen years after our launch, this strategic vision not only responds to the changed circumstances of our member libraries, the world and HathiTrust itself, but builds on our existing strengths to outline critical and meaningful work over the next three to five years. We are excited about this work and will continually share our progress on advancing our vision.</p>
-                    <p class="exbold">— Mike Furlough, Executive Director</p>
+                    <p class="exbold">— Mike Furlough</p>
                 </div>
             </div>
 
@@ -61,77 +61,77 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                     <button class="accordion-button allcaps" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                        Increase Access and Use
+                        Directon 1: Increase Access and Use
                     </button>
                     </h2>
                     <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                     <div class="accordion-body">
                         <p>We will expand access to and increase use of copyrighted, open, and public domain works in the HathiTrust collection.</p>
                         <p class="bold">Objectives</p>
-                        <ul>
+                        <ol type="a">
                             <li>Investigate, analyze, and respond to the diversity of our usersr' needs and practices.</li>
                             <li>Expand the modes of lawful access to in-copyright works, in partnership with the wider community.</li>
                             <li>Identify more public domain works by further automating and scaling copyright review processes to identify eligible works.</li>
                             <li>Integrate lawful and ethical computational methods and tools into service offerings, access, workflows, and system improvements.</li>
                             <li>Engage other organizations involved in print preservation so that we contribute to the larger ecosystem based on our greatest and unique strengths.</li>
-                        </ul>
+                        </ol>
                     </div>
                     </div>
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
                     <button class="accordion-button collapsed allcaps" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                        Expand and Diversify the Collection
+                        Direction 2: Expand and Diversify the Collection
                     </button>
                     </h2>
                     <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
                     <div class="accordion-body">
                         <p>We will expand the volume and diversity of book and serial content in the HathiTrust collection.</p>
                         <p class="bold">Objectives</p>
-                        <ul>
+                        <ol type="a">
                             <li>Enable members to identify, digitize, preserve, and contribute their unique content to the collection—especially that of underrepresented and historically-marginalized voices and perspectives.</li>
                             <li>Invite organizations engaged in mass digitization of book and serial content, that are not currently members, to contribute and preserve their collections with HathiTrust.</li>
                             <li>Build collaborations in support of scholarship and our libraries that will enable us to develop a collection that works towards a more just society, and towards resilience in response to changing economic, social and environmental conditions.</li>
                             <li>Develop mutually beneficial relationships with scholarly publishers to enable increased discovery, access, and use of their open and in-copyright content.</li>
-                        </ul>
+                        </ol>
                     </div>
                     </div>
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panelsStayOpen-headingThree">
                     <button class="accordion-button collapsed allcaps" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                        Enrich Texts and Metadata
+                        Direction 3: Enrich Texts and Metadata
                     </button>
                     </h2>
                     <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
                     <div class="accordion-body">
                         <p>We will expand access to and increase use of copyrighted, open, and public domain works in the HathiTrust collection.</p>
                         <p class="bold">Objectives</p>
-                        <ul>
+                        <ol type="a">
                             <li>Apply existing and emerging computational tools and methods in service of text and metadata improvement.</li>
                             <li>Actively manage and share bibliographic metadata entrusted to our care.</li>
                             <li>Prioritize investments in enriching text and metadata to make the collection more discoverable, findable, and usable.</li>
-                        </ul>
+                        </ol>
                     </div>
                     </div>
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panelsStayOpen-headingFour">
                     <button class="accordion-button collapsed allcaps" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
-                        Invest In Core, Enabling Infrastructure
+                        Direction 4: Invest In Core, Enabling Infrastructure
                     </button>
                     </h2>
                     <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
                     <div class="accordion-body">
                     <p>We will reinforce our technological and operational foundations to preserve and steward the HathiTrust collection responsibly, sustainably, and effectively.</p>
                     <p class="bold">Objectives</p>
-                    <ul>
+                    <ol type="a">
                         <li>Ensure resilience and sustainability of our preservation infrastructure by addressing technical debt in legacy systems.</li>
                         <li>Improve the search and discovery of all collections, in multiple languages.</li>
                         <li>Streamline the collections ingest deposit process.</li>
                         <li>Develop robust collection analysis tools and usage statistics for both operational uses and for members' uses.</li>
                         <li>Increase our capacity to assess, develop, and integrate advanced and emerging computational methods into our work and offerings, and do so responsibly and ethically.</li>
-                    </ul>
+                    </ol>
                     </div>
                     </div>
                 </div>
@@ -208,7 +208,7 @@
                 </picture>
                 <figcaption class="caption"><span class="bold">Image:</span> Lançon, Auguste André. <span class="ital">The life of an elephant.</span> London : Seeley and Co. Limited, 1909. Contributed by The Ohio State University.</figcaption>
             </figure>
-            <h2 class="pb-4" id="#acknowledgements">Acknowledgements</h2>
+            <h2 class="pb-4" id="acknowledgements">Acknowledgements</h2>
             <p class="sv-gap">Librarians and staff at our member institutions participated throughout the process, providing a variety of perspectives in every phase. HathiTrust staff shared additional insight, as well as logistical support to the entire process. A group of strategic leaders representing the breadth and depth of the membership provided consistency and continuity throughout the project as the Strategic Visioning Task Force. We are indebted to each of them for the time, expertise, and commitment they dedicated to envisioning HathiTrust's future.</p>
             <p>Hundreds of individuals from 140 different member libraries and peer organization participated in the following activities, the responses to which helped guide the creation of the vision.</p>
             <ul>
