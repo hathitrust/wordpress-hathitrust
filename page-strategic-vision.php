@@ -69,7 +69,7 @@
                         <p>We will expand access to and increase use of copyrighted, open, and public domain works in the HathiTrust collection.</p>
                         <p class="bold">Objectives</p>
                         <ol type="a">
-                            <li>Investigate, analyze, and respond to the diversity of our usersr' needs and practices.</li>
+                            <li>Investigate, analyze, and respond to the diversity of our users' needs and practices.</li>
                             <li>Expand the modes of lawful access to in-copyright works, in partnership with the wider community.</li>
                             <li>Identify more public domain works by further automating and scaling copyright review processes to identify eligible works.</li>
                             <li>Integrate lawful and ethical computational methods and tools into service offerings, access, workflows, and system improvements.</li>
