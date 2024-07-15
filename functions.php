@@ -241,7 +241,7 @@
 	function pg_editor_styles( $settings ) {
 
 		// updates the block formats dropdown
-		$settings['block_formats'] = 'Paragraph=p;Heading 2=h2;Heading 3=h3';
+		$settings['block_formats'] = 'Paragraph=p;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6';
 
 		// populates formats dropdown with theme-specific values
 		$style_formats = array(
