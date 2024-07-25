@@ -23,7 +23,7 @@
 			<article class="fatl-card fatl-card<?= $i; ?>">
 				<a href="<?= esc_url( get_sub_field( 'url' ) ); ?>" aria-hidden="true" tabindex="-1"><?= wp_get_attachment_image( get_sub_field( 'image' ), 'full', FALSE, array( 'loading' => $i === 1 ? 'eager' : 'lazy' ) ); ?></a>
 				<div class="fatl-card-content">
-					<a class="fatlc-title" href="<?= esc_url( get_sub_field( 'url' ) ); ?>"><?= wp_kses_post( get_sub_field( 'title' ) ); ?></a>
+					<a class="fatlc-title d-inline-block" href="<?= esc_url( get_sub_field( 'url' ) ); ?>"><?= wp_kses_post( get_sub_field( 'title' ) ); ?></a>
 					<div class="fatlc-excerpt"><?= wp_kses_post( get_sub_field( 'excerpt' ) ); ?></div>
 <?php
 
@@ -77,7 +77,7 @@
 
 ?>
 				<div class="nae-card-content">
-					<a class="nae-title" href="<?= esc_url( get_permalink( $postID ) ); ?>"><?= esc_html( get_the_title( $postID ) ); ?></a>
+					<a class="nae-title d-inline-block" href="<?= esc_url( get_permalink( $postID ) ); ?>"><?= esc_html( get_the_title( $postID ) ); ?></a>
 					<div class="nae-excerpt"><?= $excerpt; ?></div>
 				</div>
 			</article>
