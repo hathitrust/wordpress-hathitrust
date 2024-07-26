@@ -105,12 +105,12 @@
                     </h2>
                     <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
                     <div class="accordion-body">
-                        <p>We will expand access to and increase use of copyrighted, open, and public domain works in the HathiTrust collection.</p>
+                        <p>We will enable new forms of discovery, access, and use of the HathiTrust collection through large-scale enhancement of texts and metadata.</p>
                         <p class="bold">Objectives</p>
                         <ol type="a">
-                            <li>Apply existing and emerging computational tools and methods in service of text and metadata improvement.</li>
                             <li>Actively manage and share bibliographic metadata entrusted to our care.</li>
                             <li>Prioritize investments in enriching text and metadata to make the collection more discoverable, findable, and usable.</li>
+                            <li>Apply existing and emerging computational tools and methods in service of text and metadata improvement.</li>
                         </ol>
                     </div>
                     </div>
