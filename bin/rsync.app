@@ -10,8 +10,8 @@ EXCLUDE=$(cat <<EOT
   --exclude .github
   --exclude .git
   --exclude .gitignore
-  --exclude $DEPLOY_SRC/node_modules
+  --exclude node_modules
 EOT
 )
 
-/usr/bin/rsync "$@" $EXCLUDE $DEPLOY_DEST
+/usr/bin/rsync "$@" $EXCLUDE $DEPLOY_SRC $DEPLOY_DEST
