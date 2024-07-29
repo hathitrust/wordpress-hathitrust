@@ -11,3 +11,4 @@ node_modules/
 dist/css/style.min.css
 dist/js/scripts.min.js
 dist/js/cookies.min.js
+dist/css/home.min.css

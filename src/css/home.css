@@ -116,8 +116,10 @@
   grid-column: 1 / -1;
 }
 .nae-card a {
-  aspect-ratio: 1;
   font-weight: 700;
+}
+.nae-card a:has(img) {
+  aspect-ratio: 1;
 }
 .nae-card a:not(:hover) {
   text-decoration: none;
@@ -179,6 +181,9 @@
 .home-pres h2 {
   margin-top: 1rem;
   font-weight: 700;
+}
+.home-pres h2 a {
+  display: inline-block;
 }
 .home-pres a:not(:hover) {
   text-decoration: none;

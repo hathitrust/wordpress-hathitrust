@@ -778,6 +778,9 @@ hathi-website-footer {
   color: var(--white);
   background-color: var(--primary);
 }
+.post-title a {
+  display: inline-block;
+}
 .post-title:not(:first-child) {
   margin-top: 1rem;
 }
