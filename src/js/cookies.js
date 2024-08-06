@@ -55,25 +55,6 @@ function removeCookie(sKey, sPath, sDomain) {
   return true;
 }
 
-function loadYouTubeVideo() {
-  if (window.location.pathname !== '/') {
-    return;
-  }
-
-  let placeholder = document.querySelector('.yt-no-consent');
-
-  if (!placeholder) {
-    return;
-  }
-
-  let youtubeVideo = document.querySelector('.home-pres iframe');
-  let youtubeSrc = youtubeVideo.getAttribute('data-cookieblock-src');
-
-  youtubeVideo.src = youtubeSrc;
-  youtubeVideo.removeAttribute('data-cookieblock-src');
-  placeholder.remove();
-}
-
 function loadMapEmbed() {
   if (!window.location.pathname.includes('member-list')) {
     return;
@@ -89,7 +70,6 @@ function loadMapEmbed() {
 
 function checkForCookies() {
   if (getCookie('HT-marketing-cookie-consent') === 'true') {
-    loadYouTubeVideo();
     loadMapEmbed();
   }
   if (getCookie('HT-tracking-cookie-consent') === 'true') {

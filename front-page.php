@@ -116,23 +116,11 @@
 	</div>
 <?php
 
-			$pres = get_field( 'presentations' );
+			// $pres = get_field( 'presentations' );
+			$training = get_field( 'training' );
 
 ?>
-	<div class="home-pres">
-		<div class="yt-no-consent pres-card">
-				<img src="/wp-content/themes/wordpress-hathitrust/images/yt/new_website.jpg" alt=""/>
-				<div class="d-flex align-items-center gap-2">
-					<i class="fa-brands fa-youtube fa-fw fa-xl" aria-hidden="true"></i><a target="_blank" rel="noopener" class="text-decoration-underline fw-bold d-inline" href="https://www.youtube.com/watch?v=<?= $pres['youtube']['video_id'] ?>">Video: <?= esc_attr( $pres['youtube']['video_title'] ); ?><i class="fa-solid fa-arrow-up-right-from-square fa-fw ps-2" aria-hidden="true"></i></a>
-				</div>
-				<p class="small">This YouTube video has been disabled by your cookie selection. You can watch this video on YouTube: <a target="_blank" rel="noopener" class="text-decoration-underline" href="https://www.youtube.com/watch?v=<?= $pres['youtube']['video_id'] ?>"><?= esc_attr( $pres['youtube']['video_title'] ); ?></a><span class="visually-hidden">(opens in a new tab)</span>.</p>
-		</div>
-		<iframe loading="lazy" width="508" height="285" data-cookieblock-src="<?= esc_url( 'https://www.youtube-nocookie.com/embed/' . $pres['youtube']['video_id'] . '?modestbranding=1&rel=0&enablejsapi=1' ); ?>" title="<?= esc_attr( $pres['youtube']['video_title'] ); ?>"></iframe>
-		<div class="hpres-content">
-			<a href="<?= esc_url( $pres['cta']['url'] ); ?>" class="allcaps link-arrow"><span><?= esc_html( $pres['cta']['label'] ); ?></span></a>
-			<div class="hpres-copy"><?= wp_kses_post( $pres['content'] ); ?></div>
-		</div>
-	</div>
+	
 	<section class="home-fc">
 		<h2 class="h3 allcaps">Featured Collections</h2>
 		<div class="home-fc-cards">
@@ -162,6 +150,15 @@
 ?>
 		</div>
 	</section>
+	<div class="home-pres">
+		<div class="yt-no-consent pres-card">
+				<a href="<?= esc_url( $training['image']['url'] ); ?>"><img src="<?= esc_url( $training['image']['med_img']['url'] ); ?>" alt=""/></a>
+		</div>
+		<div class="hpres-content">
+			<a href="<?= esc_url( $training['cta']['url'] ); ?>" class="allcaps link-arrow"><span><?= esc_html( $training['cta']['label'] ); ?></span></a>
+			<div class="hpres-copy"><?= wp_kses_post( $training['content'] ); ?></div>
+		</div>
+	</div>
 </div>
 <?php
 
