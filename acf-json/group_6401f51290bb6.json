@@ -416,7 +416,7 @@
         },
         {
             "key": "field_6401f57f4a4a9",
-            "label": "Presentations",
+            "label": "Training",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -433,8 +433,8 @@
         },
         {
             "key": "field_640218c61c730",
-            "label": "Presentations",
-            "name": "presentations",
+            "label": "Training",
+            "name": "training",
             "aria-label": "",
             "type": "group",
             "instructions": "",
@@ -527,8 +527,8 @@
                 },
                 {
                     "key": "field_640219f05c3d1",
-                    "label": "YouTube",
-                    "name": "youtube",
+                    "label": "Image",
+                    "name": "image",
                     "aria-label": "",
                     "type": "group",
                     "instructions": "",
@@ -543,10 +543,10 @@
                     "sub_fields": [
                         {
                             "key": "field_640218dedda50",
-                            "label": "Video ID",
-                            "name": "video_id",
+                            "label": "Image from Media Library",
+                            "name": "med_img",
                             "aria-label": "",
-                            "type": "text",
+                            "type": "image",
                             "instructions": "",
                             "required": 1,
                             "conditional_logic": 0,
@@ -555,18 +555,23 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
+                            "return_format": "array",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "preview_size": "medium"
                         },
                         {
                             "key": "field_640219ff5c3d2",
-                            "label": "Video Title",
-                            "name": "video_title",
+                            "label": "Training URL",
+                            "name": "url",
                             "aria-label": "",
-                            "type": "text",
+                            "type": "url",
                             "instructions": "",
                             "required": 1,
                             "conditional_logic": 0,
@@ -575,11 +580,8 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
+                            "default_value": "URL of training material, linked from image",
+                            "placeholder": ""
                         }
                     ]
                 }
@@ -756,5 +758,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1678389489
+    "modified": 1722541634
 }
