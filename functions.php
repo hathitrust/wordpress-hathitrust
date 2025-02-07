@@ -79,9 +79,11 @@
 			// wp_enqueue_script( 'firebird-scripts', '//localhost:5173/js/main.js', array(), false, false);
 			wp_enqueue_script( 'site-scripts', get_template_directory_uri() . '/src/js/scripts.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/scripts.js' ), TRUE );
 			wp_enqueue_script( 'cookie-scripts', get_template_directory_uri() . '/src/js/cookies.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/cookies.js' ), TRUE );
+			wp_enqueue_script( 'highlight-scripts', get_template_directory_uri() . '/src/js/highlight.js', array('firebird-scripts'), filemtime( get_template_directory() . '/src/js/highlight.js' ), TRUE );
 		} else {
 			wp_enqueue_script( 'site-scripts', get_template_directory_uri() . '/dist/js/scripts.min.js', array('firebird-scripts'), filemtime( get_template_directory() . '/dist/js/scripts.min.js' ), TRUE );
 			wp_enqueue_script( 'cookie-scripts', get_template_directory_uri() . '/dist/js/cookies.min.js', array('firebird-scripts'), filemtime( get_template_directory() . '/dist/js/cookies.min.js' ), TRUE );
+			wp_enqueue_script( 'highlight-scripts', get_template_directory_uri() . '/dist/js/highlight.min.js', array('firebird-scripts'), filemtime( get_template_directory() . '/dist/js/highlight.min.js' ), TRUE );
 			// hotjar script is added through firebird-common + ping
 		}
 

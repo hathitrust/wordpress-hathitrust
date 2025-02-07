@@ -328,6 +328,59 @@
     document.documentElement.classList.add('can-sscroll');
   }
 
+  /* copy to clipboard */
+
+  const codeblocks = document.querySelectorAll('figure.codeblock, figure.snippet');
+
+  codeblocks.forEach((block) => {
+    // only add event listener if API clipboard is available
+    console.log('block!', block);
+    if (navigator.clipboard) {
+      let button = block.querySelector('.copycode');
+      let tooltip = block.querySelector('tool-tip');
+
+      button.addEventListener('click', async () => {
+        await copyCode(block, tooltip);
+      });
+    }
+  });
+
+  async function copyCode(block, tooltip) {
+    let code = block.querySelector('code');
+    let text = code.innerText;
+
+    console.log('text', text);
+
+    await navigator.clipboard.writeText(text);
+
+    //updates tooltip text
+    tooltip.innerText = 'Copied!';
+
+    setTimeout(() => {
+      tooltip.innerText = 'Copy';
+    }, 1000);
+  }
+
+  // handling tooltip ESC, WCAG 1.4.13 "content on hover must be dismissible"
+  document.addEventListener('keydown', (e) => {
+    const tooltips = document.querySelectorAll('tool-tip');
+    if (e.key === 'Escape') {
+      tooltips.forEach((tooltip) => {
+        if (window.getComputedStyle(tooltip).getPropertyValue('visibility') === 'visible') {
+          tooltip.style.visibility = 'hidden';
+        }
+
+        tooltip.parentElement.addEventListener('mouseleave', (e) => {
+          tooltip.removeAttribute('style');
+        });
+
+        tooltip.parentElement.addEventListener('blur', (e) => {
+          tooltip.removeAttribute('style');
+        });
+      });
+    }
+  });
+
   setupSidebarNavigationMenu();
   setupArrowLinks();
   setupBackToTop();
