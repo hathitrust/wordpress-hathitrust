@@ -334,7 +334,6 @@
 
   codeblocks.forEach((block) => {
     // only add event listener if API clipboard is available
-    console.log('block!', block);
     if (navigator.clipboard) {
       let button = block.querySelector('.copycode');
       let tooltip = block.querySelector('tool-tip');
@@ -354,11 +353,12 @@
     await navigator.clipboard.writeText(text);
 
     //updates tooltip text
-    tooltip.innerText = 'Copied!';
+    tooltip.innerHTML =
+      '<span aria-live="polite">Copied</span> <i class="fa-solid fa-circle-check" aria-hidden="true"></i>';
 
     setTimeout(() => {
       tooltip.innerText = 'Copy';
-    }, 1000);
+    }, 1300);
   }
 
   // handling tooltip ESC, WCAG 1.4.13 "content on hover must be dismissible"

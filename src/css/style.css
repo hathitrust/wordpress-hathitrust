@@ -942,6 +942,7 @@ tool-tip {
   background: var(--black);
   font-family: 'Mulish', sans-serif;
   font-size:0.75rem;
+  text-wrap: nowrap;
   padding: 0.75rem;
   margin-block-end: 6px;
   border-radius: 0.5rem;
@@ -949,19 +950,19 @@ tool-tip {
   position:absolute;
   
 
-  &::after {
-    content:'';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -7px;
-    border-width: 7px;
-    border-style: solid;
-    border-color: var(--black) transparent transparent transparent;
-    z-index: -1;
-    
-  }
+
   
+}
+tool-tip::after {
+  content:'';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -7px;
+  border-width: 7px;
+  border-style: solid;
+  border-color: var(--black) transparent transparent transparent;
+  z-index: -1;
 }
 
 .codeblock tool-tip {
