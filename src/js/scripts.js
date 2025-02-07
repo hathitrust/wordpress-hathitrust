@@ -348,17 +348,11 @@
     let code = block.querySelector('code');
     let text = code.innerText;
 
-    console.log('text', text);
-
     await navigator.clipboard.writeText(text);
 
     //updates tooltip text
     tooltip.innerHTML =
       '<span aria-live="polite">Copied</span> <i class="fa-solid fa-circle-check" aria-hidden="true"></i>';
-
-    setTimeout(() => {
-      tooltip.innerText = 'Copy';
-    }, 1300);
   }
 
   // handling tooltip ESC, WCAG 1.4.13 "content on hover must be dismissible"
@@ -379,6 +373,18 @@
         });
       });
     }
+  });
+
+  const copyButtons = document.querySelectorAll('button.copycode');
+  copyButtons.forEach((button) => {
+    button.addEventListener('mouseleave', (e) => {
+      console.log('mouseleave copy button', e.target.lastElementChild);
+      e.target.lastElementChild.innerText = 'Copy';
+    });
+    button.addEventListener('blur', (e) => {
+      console.log('mouseleave copy button', e.target.lastElementChild);
+      e.target.lastElementChild.innerText = 'Copy';
+    });
   });
 
   setupSidebarNavigationMenu();
