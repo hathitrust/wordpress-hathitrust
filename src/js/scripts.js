@@ -328,6 +328,65 @@
     document.documentElement.classList.add('can-sscroll');
   }
 
+  /* copy to clipboard */
+
+  const codeblocks = document.querySelectorAll('figure.codeblock, figure.snippet');
+
+  codeblocks.forEach((block) => {
+    // only add event listener if API clipboard is available
+    if (navigator.clipboard) {
+      let button = block.querySelector('.copycode');
+      let tooltip = block.querySelector('tool-tip');
+
+      button.addEventListener('click', async () => {
+        await copyCode(block, tooltip);
+      });
+    }
+  });
+
+  async function copyCode(block, tooltip) {
+    let code = block.querySelector('code');
+    let text = code.innerText;
+
+    await navigator.clipboard.writeText(text);
+
+    //updates tooltip text
+    tooltip.innerHTML =
+      '<span aria-live="polite">Copied</span> <i class="fa-solid fa-circle-check" aria-hidden="true"></i>';
+  }
+
+  // handling tooltip ESC, WCAG 1.4.13 "content on hover must be dismissible"
+  document.addEventListener('keydown', (e) => {
+    const tooltips = document.querySelectorAll('tool-tip');
+    if (e.key === 'Escape') {
+      tooltips.forEach((tooltip) => {
+        if (window.getComputedStyle(tooltip).getPropertyValue('visibility') === 'visible') {
+          tooltip.style.visibility = 'hidden';
+        }
+
+        tooltip.parentElement.addEventListener('mouseleave', (e) => {
+          tooltip.removeAttribute('style');
+        });
+
+        tooltip.parentElement.addEventListener('blur', (e) => {
+          tooltip.removeAttribute('style');
+        });
+      });
+    }
+  });
+
+  const copyButtons = document.querySelectorAll('button.copycode');
+  copyButtons.forEach((button) => {
+    button.addEventListener('mouseleave', (e) => {
+      console.log('mouseleave copy button', e.target.lastElementChild);
+      e.target.lastElementChild.innerText = 'Copy';
+    });
+    button.addEventListener('blur', (e) => {
+      console.log('mouseleave copy button', e.target.lastElementChild);
+      e.target.lastElementChild.innerText = 'Copy';
+    });
+  });
+
   setupSidebarNavigationMenu();
   setupArrowLinks();
   setupBackToTop();
