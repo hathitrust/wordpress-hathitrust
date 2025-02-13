@@ -133,14 +133,14 @@
           "min": "",
           "max": "1"
         },
-        "layout_6442d5d43801e": {
-          "key": "layout_6442d5d43801e",
+        "layout_67ae3324abee2": {
+          "key": "layout_67ae3324abee2",
           "name": "post",
           "label": "Post",
           "display": "block",
           "sub_fields": [
             {
-              "key": "field_6442d5d838020",
+              "key": "field_67ae332fabee4",
               "label": "Post",
               "name": "post",
               "aria-label": "",
@@ -154,7 +154,6 @@
                 "id": ""
               },
               "post_type": ["blogs", "events", "press"],
-              "post_status": "",
               "taxonomy": "",
               "return_format": "id",
               "multiple": 0,
