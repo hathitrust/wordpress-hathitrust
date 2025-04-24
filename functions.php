@@ -127,17 +127,7 @@
 			box-shadow: none;
 		}
     </style>
-	<script>
-		document.addEventListener("DOMContentLoaded", (event) => {
-			document.getElementById('loginform').removeAttribute('method');
-			document.getElementById('loginform').removeAttribute('action');
-			document.querySelectorAll('body.login #loginform p').forEach(e => e.remove());
-			document.querySelectorAll('body.login #loginform br').forEach(e => e.remove());
-			document.querySelector('body.login #loginform .user-pass-wrap').remove();
-			document.querySelector('body.login #loginform h4').remove();
-			document.querySelector('body.login p#nav').remove();
-		})
-	</script>
+	
 	<?php }
 	add_action( 'login_enqueue_scripts', 'custom_login_page' );
 
