@@ -100,6 +100,38 @@
 	add_filter( 'script_loader_tag', 'add_type_attribute', 10, 3);
 
 	/**
+	 *  Customize login page
+	 */
+	function custom_login_page() { ?>
+    <style type="text/css">
+		body.login form#loginform {
+			border-radius: 0.375rem;
+		}
+		body.login #loginform .row a {
+			display:inline-flex;
+			width:100%;
+		}
+		body.login #loginform .row .mo_oauth_login_button {
+			padding: 0;
+			border-width: 0;
+			cursor: pointer;
+			display: inline-flex;
+			align-items: center;
+			padding: 0.5rem 1rem;
+			border: 1px solid;
+			border-radius: 0.375rem;
+			font-weight: 800;
+			line-height: 1.31;
+			text-decoration: none;
+			color:white;
+			box-shadow: none;
+		}
+    </style>
+	
+	<?php }
+	add_action( 'login_enqueue_scripts', 'custom_login_page' );
+
+	/**
 	 *  Activate extended theme features.
 	 */
 	function pg_custom_theme_setup() {
