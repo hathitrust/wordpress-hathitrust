@@ -7,6 +7,7 @@
 
 ?>
 <div class="hmain">
+	<h1 class="visually-hidden">Home page</h1> 
 	<section class="home-fatl">
 		<h2 class="h3 allcaps">From Around the Library</h2>
 		<div class="home-fatl-cards">
@@ -152,7 +153,7 @@
 	</section>
 	<div class="home-pres">
 		<div class="yt-no-consent pres-card">
-				<a href="<?= esc_url( $training['image']['url'] ); ?>"><img src="<?= esc_url( $training['image']['med_img']['url'] ); ?>" alt=""/></a>
+				<a href="<?= esc_url( $training['image']['url'] ); ?>" aria-hidden="true" tabindex="-1"><img src="<?= esc_url( $training['image']['med_img']['url'] ); ?>" alt=""/></a>
 		</div>
 		<div class="hpres-content">
 			<a href="<?= esc_url( $training['cta']['url'] ); ?>" class="allcaps link-arrow"><span><?= esc_html( $training['cta']['label'] ); ?></span></a>
