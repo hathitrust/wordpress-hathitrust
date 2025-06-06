@@ -71,7 +71,7 @@
 				if ( $img ) {
 
 ?>
-				<a href="#" aria-hidden="true" tabindex="-1"><?= wp_get_attachment_image( $img, 'full', FALSE, array( 'alt' => '' ) ); ?></a>
+				<a href="<?= esc_url( get_permalink( $postID ) ); ?>" aria-hidden="true" tabindex="-1"><?= wp_get_attachment_image( $img, 'full', FALSE, array( 'alt' => '' ) ); ?></a>
 <?php
 
 				}
