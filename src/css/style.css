@@ -328,7 +328,66 @@ hathi-alert-banner {
 hathi-website-footer {
   grid-area: footer;
 }
-.error404 .main {
+
+.error404 main {
+  display: block;
+}
+.error404 .error-wrapper  {
+position: relative;
+}
+.error404 .error-wrapper section  {
+width: 27.75rem;
+gap: 3.75rem;
+margin-top: 3rem;
+}
+.error404 .error-wrapper .message-wrapper  {
+gap: 1.25rem;
+}
+.error404 .error-wrapper h1  {
+font-size: var(--ht-text-3xl);
+font-weight: 700;
+line-height: 2.375rem;
+margin: 0;
+}
+.error404 .error-wrapper h2.error-code  {
+color: var(--color-neutral-500);
+font-size: var(--ht-text-sm);
+font-weight: 700;
+line-height: 1.125rem;
+margin: 0;
+}
+.error404 .error-wrapper .error-message  {
+color: var(--color-neutral-800);
+font-size: var(--ht-text-xl);
+font-weight: 400;
+line-height: 2.125rem;
+}
+.error404 .error-wrapper .help-links p  {
+font-size: var(--ht-text-md);
+color: var(--color-neutral-800);
+margin: 0;
+}
+.error404 .error-wrapper .help-links ul li a {
+  color: var(--color-primary-600);
+}
+.error404 .error-wrapper  {
+background-image: url(../../images/error_elephant.svg);
+background-position: right bottom;
+background-repeat: no-repeat;
+min-height: 37.5rem;
+}
+@media (max-width: 1200px) { 
+  .error404 .error-wrapper  {
+    background-size: 28.44rem;
+  }
+}
+@media (max-width: 990px) {
+  .error404 .error-wrapper  {
+    background-size: 21.33rem;
+    min-height: 42rem;
+  }
+}
+/* .error404 .main {
   padding-bottom: 0;
 }
 .error404 .main::after {
@@ -340,7 +399,7 @@ hathi-website-footer {
   background-repeat: no-repeat;
   background-size: calc(100% - 2.5rem);
   content: '';
-}
+} */
 .bc {
   grid-area: 1 / 1;
   margin-inline: max(clamp(0.938rem, calc(0.268rem + 3.348vw), 1.875rem), ((100% - 73.125rem) / 2));
@@ -1223,11 +1282,11 @@ figure.snippet {
   }
 }
 
-@media (min-width: 62em) {
+/* @media (min-width: 62em) {
   /* 992px */
 
   /* structure */
-  .error404 .main {
+  /* .error404 .main {
     min-height: clamp(27.5rem, 8.556rem + 30.556vw, 33rem);
     padding-bottom: var(--pb);
     background-image: url('../../images/bg404desktop.svg');
@@ -1236,8 +1295,8 @@ figure.snippet {
   }
   .error404 .main::after {
     content: none;
-  }
-}
+  } 
+} */
 
 @media (prefers-reduced-motion: no-preference) {
   /* utility classes */
