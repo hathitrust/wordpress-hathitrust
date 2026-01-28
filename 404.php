@@ -3,7 +3,7 @@
 	get_header();
 
 ?>
-<div class="container error-wrapper">
+<div class="container error-wrapper" id="page-content">
           <section class="d-flex flex-column">
             <div class="d-flex flex-column message-wrapper">
               <div class="d-flex flex-column-reverse gap-2">
