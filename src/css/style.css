@@ -361,6 +361,7 @@ color: var(--color-neutral-800);
 font-size: var(--ht-text-xl);
 font-weight: 400;
 line-height: 2.125rem;
+margin-bottom: 0;
 }
 .error404 .error-wrapper .help-links p  {
 font-size: var(--ht-text-md);
@@ -387,19 +388,6 @@ min-height: 37.5rem;
     min-height: 42rem;
   }
 }
-/* .error404 .main {
-  padding-bottom: 0;
-}
-.error404 .main::after {
-  grid-row: 3;
-  aspect-ratio: 343 / 220;
-  margin-top: 3.125rem;
-  background-image: url('../../images/bg404mobile.svg');
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  background-size: calc(100% - 2.5rem);
-  content: '';
-} */
 .bc {
   grid-area: 1 / 1;
   margin-inline: max(clamp(0.938rem, calc(0.268rem + 3.348vw), 1.875rem), ((100% - 73.125rem) / 2));
