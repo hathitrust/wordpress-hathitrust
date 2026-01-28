@@ -195,7 +195,7 @@ h3,
 }
 
 /* utility classes */
-.btn {
+.btn:not(dialog .btn) { /*all buttons not in modals; styles were conflicting with firebird modal styles*/
   display: inline-flex;
   gap: 0.75rem;
   align-items: center;
