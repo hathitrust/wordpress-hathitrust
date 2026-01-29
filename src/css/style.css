@@ -195,7 +195,7 @@ h3,
 }
 
 /* utility classes */
-.btn:not(dialog .btn) { /*all buttons not in modals; styles were conflicting with firebird modal styles*/
+.btn:not(dialog .btn, .banner-buttons button) { /*all buttons not in modals or cookie banner; styles were conflicting with firebird button styles*/
   display: inline-flex;
   gap: 0.75rem;
   align-items: center;
@@ -328,18 +328,65 @@ hathi-alert-banner {
 hathi-website-footer {
   grid-area: footer;
 }
-.error404 .main {
-  padding-bottom: 0;
+
+.error404 main {
+  display: block;
 }
-.error404 .main::after {
-  grid-row: 3;
-  aspect-ratio: 343 / 220;
-  margin-top: 3.125rem;
-  background-image: url('../../images/bg404mobile.svg');
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  background-size: calc(100% - 2.5rem);
-  content: '';
+.error404 .error-wrapper  {
+position: relative;
+}
+.error404 .error-wrapper section  {
+width: 27.75rem;
+gap: 3rem;
+margin-top: 3rem;
+}
+.error404 .error-wrapper .message-wrapper  {
+gap: 1.25rem;
+}
+.error404 .error-wrapper h1  {
+font-size: var(--ht-text-3xl);
+font-weight: 700;
+line-height: 2.375rem;
+margin: 0;
+}
+.error404 .error-wrapper h2.error-code  {
+color: var(--color-neutral-500);
+font-size: var(--ht-text-sm);
+font-weight: 700;
+line-height: 1.125rem;
+margin: 0;
+}
+.error404 .error-wrapper .error-message  {
+color: var(--color-neutral-800);
+font-size: var(--ht-text-xl);
+font-weight: 400;
+line-height: 2.125rem;
+margin-bottom: 0;
+}
+.error404 .error-wrapper .help-links p  {
+font-size: var(--ht-text-md);
+color: var(--color-neutral-800);
+margin: 0;
+}
+.error404 .error-wrapper .help-links ul li a {
+  color: var(--color-primary-600);
+}
+.error404 .error-wrapper  {
+background-image: url(../../images/error_elephant.svg);
+background-position: right bottom;
+background-repeat: no-repeat;
+min-height: 37.5rem;
+}
+@media (max-width: 1200px) { 
+  .error404 .error-wrapper  {
+    background-size: 28.44rem;
+  }
+}
+@media (max-width: 990px) {
+  .error404 .error-wrapper  {
+    background-size: 21.33rem;
+    min-height: 42rem;
+  }
 }
 .bc {
   grid-area: 1 / 1;
@@ -1223,11 +1270,11 @@ figure.snippet {
   }
 }
 
-@media (min-width: 62em) {
+/* @media (min-width: 62em) {
   /* 992px */
 
   /* structure */
-  .error404 .main {
+  /* .error404 .main {
     min-height: clamp(27.5rem, 8.556rem + 30.556vw, 33rem);
     padding-bottom: var(--pb);
     background-image: url('../../images/bg404desktop.svg');
@@ -1236,8 +1283,8 @@ figure.snippet {
   }
   .error404 .main::after {
     content: none;
-  }
-}
+  } 
+} */
 
 @media (prefers-reduced-motion: no-preference) {
   /* utility classes */
