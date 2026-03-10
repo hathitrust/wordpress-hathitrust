@@ -455,6 +455,8 @@
 
 	//format bytes to mb/kb
 	function formatBytes($size, $precision = 2) {
+		if ($size <= 0) return '0 B';
+
 		$base = log($size, 1024);
 		$suffixes = array('B', 'kB', 'MB', 'GB', 'TB');   
 
@@ -494,7 +496,7 @@
 
 		//sort array by last modified, starting with newest
 		usort($html, function($a, $b) {
-			return ($b->lastModified) - ($a->lastModified);
+			return $b->lastModified <=> $a->lastModified;
 		});
 
 		foreach ($html as $key => $value) {
