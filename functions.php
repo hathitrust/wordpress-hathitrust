@@ -96,34 +96,20 @@
 	/**
 	 *  Customize login page
 	 */
-	function custom_login_page() { ?>
-    <style type="text/css">
-		body.login form#loginform {
-			border-radius: 0.375rem;
-		}
-		body.login #loginform .row a {
-			display:inline-flex;
-			width:100%;
-		}
-		body.login #loginform .row .mo_oauth_login_button {
-			padding: 0;
-			border-width: 0;
-			cursor: pointer;
-			display: inline-flex;
-			align-items: center;
-			padding: 0.5rem 1rem;
-			border: 1px solid;
-			border-radius: 0.375rem;
-			font-weight: 800;
-			line-height: 1.31;
-			text-decoration: none;
-			color:white;
-			box-shadow: none;
-		}
-    </style>
+	add_filter( 'wp_login_errors', 'my_login_form_lock_down', 90, 2 );
+
+	/**
+	 * Replace login form with closing tags
+	 */
+	function my_login_form_lock_down( $errors, $redirect_to ){
 	
-	<?php }
-	add_action( 'login_enqueue_scripts', 'custom_login_page' );
+		login_header( __( 'Log In' ), '', $errors );
+		echo "</div>";
+		do_action( 'login_footer' );
+		echo "</body></html>";
+		exit;
+	
+	}
 
 	/**
 	 *  Activate extended theme features.
