@@ -25,7 +25,7 @@
 	 */
 	function pg_enqueue_site_files() {
 
-		$BABEL_ROOT = str_replace('www', 'babel', $_SERVER['DOCUMENT_ROOT']);
+		$BABEL_ROOT = ('local' === wp_get_environment_type()) ? $_SERVER['DOCUMENT_ROOT'] : str_replace('www', 'babel', $_SERVER['DOCUMENT_ROOT']);
 		$manifest = json_decode(
 			file_get_contents($BABEL_ROOT . '/firebird-common/dist/manifest.json'),
 			true
