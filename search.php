@@ -18,7 +18,7 @@
     $firstResult	= ( ( $thisPage - 1 ) * 20 ) + 1;
     $lastResult		= ( $thisPage * 20 ) > $wp_query->found_posts ? $wp_query->found_posts : ( $thisPage * 20 );
 
-		$resultsStr = $firstResult . ' to ' . $lastResult . ' of ' . $wp_query->found_posts . ' ' . ngettext( 'result', 'results', $wp_query->found_posts );
+		$resultsStr = $firstResult . ' to ' . $lastResult . ' of ' . $wp_query->found_posts . ' ' . _n( 'result', 'results', $wp_query->found_posts );
 
 	} else {
 		$resultsStr = '0 results';
