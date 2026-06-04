@@ -1,0 +1,87 @@
+.file-input {
+    display: none;
+}
+
+#drop-zone {
+    border: 2px dashed var(--neutral300);
+    padding: 1rem;
+}
+
+#drop-zone.drag-over {
+    border-color: var(--primary500);
+}
+
+.checker-output {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.file-card {
+    border: 1px solid var(--neutral200);
+    border-left: 4px solid var(--neutral300);
+    border-radius: 4px;
+    padding: 1rem;
+}
+
+.file-card--error {
+    border-left-color: var(--primary500);
+}
+
+.file-card-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.file-card-name {
+    font-weight: bold;
+    word-break: break-all;
+}
+
+.file-card-badge {
+    white-space: nowrap;
+    font-size: 0.8rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+    background: var(--neutral100);
+    color: var(--neutral700);
+}
+
+.file-card--error .file-card-badge {
+    background: var(--primary100);
+    color: var(--primary700);
+}
+
+.file-card-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.5rem 1rem;
+    margin: 0 0 0.75rem;
+}
+
+.file-card-meta dt {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--neutral600);
+    margin-bottom: 0.1rem;
+}
+
+.file-card-meta dd {
+    margin: 0;
+    word-break: break-word;
+}
+
+.file-card-errors {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: var(--primary700);
+}
+
+.file-card-errors li + li {
+    margin-top: 0.25rem;
+}
