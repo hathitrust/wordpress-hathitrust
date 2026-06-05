@@ -64,7 +64,7 @@
                         Direction 1: Increase Access and Use
                     </button>
                     </h2>
-                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
                     <div class="accordion-body">
                         <p>We will expand access to and increase use of copyrighted, open, and public domain works in the HathiTrust collection.</p>
                         <p class="bold">Objectives</p>
@@ -84,7 +84,7 @@
                         Direction 2: Expand and Diversify the Collection
                     </button>
                     </h2>
-                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
                     <div class="accordion-body">
                         <p>We will expand the volume and diversity of book and serial content in the HathiTrust collection.</p>
                         <p class="bold">Objectives</p>
@@ -103,7 +103,7 @@
                         Direction 3: Enrich Texts and Metadata
                     </button>
                     </h2>
-                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
                     <div class="accordion-body">
                         <p>We will enable new forms of discovery, access, and use of the HathiTrust collection through large-scale enhancement of texts and metadata.</p>
                         <p class="bold">Objectives</p>
@@ -121,7 +121,7 @@
                         Direction 4: Invest In Core, Enabling Infrastructure
                     </button>
                     </h2>
-                    <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
+                    <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse">
                     <div class="accordion-body">
                     <p>We will reinforce our technological and operational foundations to preserve and steward the HathiTrust collection responsibly, sustainably, and effectively.</p>
                     <p class="bold">Objectives</p>
