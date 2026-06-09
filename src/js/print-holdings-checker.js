@@ -11,7 +11,13 @@ addEventListener('load', () => {
   const fileInput = document.getElementById('file-input');
   document.getElementById('file-button').addEventListener('click', () => fileInput.click());
   fileInput.addEventListener('change', (event) => {
-    processFileList([...event.target.files]);
+    const files = [...event.target.files];
+    const invalid = files.filter(f => !f.name.endsWith('.tsv'));
+    if (invalid.length > 0) {
+      showError(`Only .tsv files are supported. Unsupported file${invalid.length > 1 ? 's' : ''}: ${invalid.map(f => f.name).join(', ')}`);
+      return;
+    }
+    processFileList(files);
   });
 });
 
@@ -33,10 +39,30 @@ function dropHandler(event) {
   event.preventDefault();
   this.classList.remove('drag-over');
 
-  processFileList([...event.dataTransfer.files]);
+  const items = [...event.dataTransfer.items];
+  for (const item of items) {
+    if (item.kind === 'file') {
+      const entry = item.webkitGetAsEntry();
+      if (entry && entry.isDirectory) {
+        showError('Folders cannot be dropped here. Please select individual .tsv files.');
+        return;
+      }
+    }
+  }
+
+  const files = [...event.dataTransfer.files];
+  const invalid = files.filter(f => !f.name.endsWith('.tsv'));
+  if (invalid.length > 0) {
+    showError(`Only .tsv files are supported. Unsupported file${invalid.length > 1 ? 's' : ''}: ${invalid.map(f => f.name).join(', ')}`);
+    return;
+  }
+
+  processFileList(files);
 }
 
 function processFileList(fileList) {
+  outputContainer.replaceChildren();
+  outputContainer.style.display = 'flex';
   let remaining = fileList.length;
   let errorCount = 0;
   fileList.forEach(file => processFile(file, (hasErrors) => {
@@ -123,8 +149,8 @@ function buildCard({ fileName, type, columns, totalLines, errors }) {
 
   const header = document.createElement('div');
   header.className = 'file-card-header';
-  const fileNameHeading = document.createElement('h3');
-  fileNameHeading.className = 'file-card-name';
+  const fileNameHeading = document.createElement('h2');
+  fileNameHeading.className = 'file-card-name h3';
   fileNameHeading.textContent = fileName;
   const badge = document.createElement('span');
   badge.className = 'file-card-badge';
@@ -167,11 +193,22 @@ function buildCard({ fileName, type, columns, totalLines, errors }) {
   return card;
 }
 
+function showError(message) {
+  outputContainer.replaceChildren();
+  outputContainer.style.display = 'flex';
+  outputContainer.setAttribute('aria-label', 'Error');
+  const alertEl = document.createElement('p');
+  alertEl.className = 'checker-drop-error';
+  alertEl.setAttribute('role', 'alert');
+  alertEl.textContent = message;
+  outputContainer.appendChild(alertEl);
+  outputContainer.focus();
+}
+
 function report(file, firstLine, totalLines) {
   const columns = firstLine.split('\t');
   const { type, errors } = validateFile(file.name, columns);
   const card = buildCard({ fileName: file.name, type, columns, totalLines, errors });
-  outputContainer.style.display = 'flex';
   outputContainer.appendChild(card);
   return errors.length > 0;
 }

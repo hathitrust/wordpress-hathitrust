@@ -85,3 +85,12 @@
 .file-card-errors li + li {
     margin-top: 0.25rem;
 }
+
+.checker-drop-error {
+    border-left: 4px solid var(--primary500);
+    background: var(--primary100);
+    color: var(--primary700);
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    margin: 0;
+}
