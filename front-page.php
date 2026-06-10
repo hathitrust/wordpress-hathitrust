@@ -139,7 +139,7 @@
 				<a href="<?= esc_url( get_sub_field( 'url' ) ); ?>" aria-hidden="true" tabindex="-1"><?= wp_get_attachment_image( get_sub_field( 'image' ), 'full' ); ?></a>
 				<div class="fc-card-content">
 					<a class="fc-title" href="<?= esc_url( get_sub_field( 'url' ) ); ?>"><?= wp_kses_post( get_sub_field( 'title' ) ); ?></a>
-					<div class="fc-cnt"><?= sprintf( ngettext( '%s item', '%s items', $itemCnt ), number_format( $itemCnt ) ); ?></div>
+					<div class="fc-cnt"><?= sprintf( _n( '%s item', '%s items', $itemCnt, 'wordpress-hathitrust' ), number_format( $itemCnt ) ); ?></div>
 					<div class="fc-excerpt"><?= wp_kses_post( get_sub_field( 'excerpt' ) ); ?></div>
 				</div>
 			</article>

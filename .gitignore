@@ -12,3 +12,5 @@ dist/css/style.min.css
 dist/js/scripts.min.js
 dist/js/cookies.min.js
 dist/css/home.min.css
+dist/js/print-holdings-checker.min.js
+dist/css/print-holdings-checker.min.css
