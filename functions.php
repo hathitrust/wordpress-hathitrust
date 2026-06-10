@@ -206,6 +206,7 @@
 				'loading'			=> TRUE,
 				'src'				=> TRUE,
 				'width'				=> TRUE,
+				'title'				=> TRUE,
 			);
 		}
 
