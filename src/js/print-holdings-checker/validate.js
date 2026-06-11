@@ -27,19 +27,54 @@ export const allowedTypes = {
 };
 
 export function validateFile(fileName, columns) {
-  const parts = fileName.split('_');
-  const type = parts[1];
   const errors = [];
+  const type = validateFilename(fileName, errors);
+  if (type !== null) {
+    errors.push(...checkFields(type, columns));
+  }
+  return { type, errors };
+}
+
+function validateFilename(fileName, errors) {
+  if (!fileName.endsWith('.tsv')) {
+    errors.push(`File extension must be .tsv`);
+  }
+
+  const baseName = fileName.endsWith('.tsv') ? fileName.slice(0, -4) : fileName;
+  const parts = baseName.split('_');
 
   if (parts.length < 4) {
     errors.push(`Filename must follow the format: <member_id>_<type>_<update_type>_<date>.tsv`);
-  } else if (!(type in allowedTypes)) {
-    errors.push(`'${type}' is not a recognized holdings type (should be one of mix, mon, mpm, ser, spm)`);
-  } else {
-    errors.push(...checkFields(type, columns));
+    return null;
   }
 
-  return { type, errors };
+  const type = parts.at(-3);
+  const updateType = parts.at(-2);
+  const date = parts.at(-1);
+
+  if (!(type in allowedTypes)) {
+    errors.push(`'${type}' is not a recognized holdings type (should be one of mix, mon, mpm, ser, spm)`);
+  }
+
+  if (updateType !== 'full') {
+    errors.push(`Update type must be 'full' (got '${updateType}')`);
+  }
+
+  if (!/^\d{8}$/.test(date)) {
+    errors.push(`Date must be 8 digits in YYYYMMDD format (got '${date}')`);
+  } else if (!isValidCalendarDate(date)) {
+    errors.push(`'${date}' is not a valid calendar date`);
+  }
+
+  return (type in allowedTypes) ? type : null;
+}
+
+function isValidCalendarDate(dateStr) {
+  const year = parseInt(dateStr.slice(0, 4), 10);
+  const month = parseInt(dateStr.slice(4, 6), 10);
+  const day = parseInt(dateStr.slice(6, 8), 10);
+  const d = new Date(year, month - 1, day);
+  return d.getFullYear() === year && d.getMonth() === month - 1 && d.getDate() === day;
 }
 
 function checkFields(type, columns) {

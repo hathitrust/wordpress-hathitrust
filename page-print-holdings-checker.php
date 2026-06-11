@@ -33,7 +33,7 @@
                 <input type="file" id="file-input" class="file-input" multiple accept=".tsv" aria-hidden="true" tabindex="-1">
             </div>
 
-            <div id="output" class="checker-output" style="display:none" tabindex="-1" aria-label="Results"></div>
+            <div id="output" class="checker-output" style="display:none" tabindex="-1" aria-label="Results" aria-live="polite"></div>
 
         </div>
     </div>
