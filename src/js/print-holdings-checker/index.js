@@ -1,5 +1,11 @@
-import { validateFile, allowedTypes } from './validate.js';
+import { validateFile, validateRows, allowedTypes } from './validate.js';
 import { buildCard, buildPendingCard, showError } from './ui.js';
+
+// Fetch is CORS-blocked outside www.hathitrust.org (local dev, test); catch returns null and member ID check is silently skipped.
+const memberIdsPromise = fetch('https://www.hathitrust.org/files/ht_institutions.tsv')
+  .then(r => r.text())
+  .then(text => new Set(text.split('\n').filter(Boolean).map(line => line.split('\t')[0])))
+  .catch(() => null);
 
 const outputContainer = document.getElementById('output');
 const dropZone = document.getElementById('drop-zone');
@@ -14,7 +20,7 @@ if (dropZone) {
   document.getElementById('file-button').addEventListener('click', () => fileInput.click());
   fileInput.addEventListener('change', (event) => {
     const files = [...event.target.files];
-    const invalid = files.filter(f => !f.name.endsWith('.tsv'));
+    const invalid = files.filter(f => !f.name.toLowerCase().endsWith('.tsv'));
     if (invalid.length > 0) {
       showError(outputContainer, `Only .tsv files are supported. Unsupported file${invalid.length > 1 ? 's' : ''}: ${invalid.map(f => f.name).join(', ')}`);
       return;
@@ -53,7 +59,7 @@ function dropHandler(event) {
   }
 
   const files = [...event.dataTransfer.files];
-  const invalid = files.filter(f => !f.name.endsWith('.tsv'));
+  const invalid = files.filter(f => !f.name.toLowerCase().endsWith('.tsv'));
   if (invalid.length > 0) {
     showError(outputContainer, `Only .tsv files are supported. Unsupported file${invalid.length > 1 ? 's' : ''}: ${invalid.map(f => f.name).join(', ')}`);
     return;
@@ -71,6 +77,11 @@ async function processFileList(fileList) {
     outputContainer.appendChild(card);
     return card;
   });
+
+  // Focus before and after: first announces "Processing…" on focus (VoiceOver/Safari ignores aria-live on display:none containers);
+  // second announces the final result label once processing completes.
+  outputContainer.setAttribute('aria-label', `Processing ${fileList.length} file${fileList.length !== 1 ? 's' : ''}…`);
+  outputContainer.focus();
 
   const results = await Promise.all(
     fileList.map((file, i) => processFile(file, pendingCards[i]))
@@ -96,29 +107,45 @@ async function processFileList(fileList) {
   outputContainer.focus();
 }
 
+const ROW_SAMPLE_LIMIT = 1000;
+
 async function processFile(file, pendingCard) {
   try {
-    const text = await file.text();
+    const buffer = await file.arrayBuffer();
+    const encodingErrors = [];
+    let text;
+    // fatal: true throws on bad bytes; fall back to lenient decode so validation still runs.
+    try {
+      text = new TextDecoder('utf-8', { fatal: true }).decode(buffer);
+    } catch {
+      encodingErrors.push('File does not appear to be UTF-8 encoded - some characters may be misread');
+      text = new TextDecoder('utf-8').decode(buffer);
+    }
     const lines = text.split(/\r\n|\r|\n/);
     if (lines.at(-1) === '') lines.pop();
     const totalLines = lines.length;
     const firstLine = lines.shift();
     if (firstLine === undefined) {
-      pendingCard.replaceWith(buildCard({ fileName: file.name, displayType: '—', columns: [], totalLines: 0, errors: [] }));
-      return false;
+      pendingCard.replaceWith(buildCard({ fileName: file.name, displayType: '-', columns: [], totalLines: 0, rowsChecked: 0, sampled: false, errors: encodingErrors }));
+      return encodingErrors.length > 0;
     }
-    return report(file, firstLine, totalLines, pendingCard);
+    const sampled = lines.length > ROW_SAMPLE_LIMIT;
+    const dataRows = lines.slice(0, ROW_SAMPLE_LIMIT);
+    const memberIds = await memberIdsPromise;
+    return report({ file, firstLine, totalLines, dataRows, sampled, pendingCard, memberIds, encodingErrors });
   } catch {
-    pendingCard.replaceWith(buildCard({ fileName: file.name, displayType: '—', columns: [], totalLines: 0, errors: ['Could not read file'] }));
+    pendingCard.replaceWith(buildCard({ fileName: file.name, displayType: '-', columns: [], totalLines: 0, rowsChecked: 0, sampled: false, errors: ['Could not read file'] }));
     return true;
   }
 }
 
-function report(file, firstLine, totalLines, pendingCard) {
+function report({ file, firstLine, totalLines, dataRows, sampled, pendingCard, memberIds, encodingErrors }) {
   const columns = firstLine.split('\t');
-  const { type, errors } = validateFile(file.name, columns);
-  const displayType = (type in allowedTypes) ? type : '—';
-  const card = buildCard({ fileName: file.name, displayType, columns, totalLines, errors });
+  const { type, errors: headerErrors } = validateFile(file.name, columns, memberIds);
+  const rowErrors = validateRows(columns, dataRows);
+  const errors = [...encodingErrors, ...headerErrors, ...rowErrors];
+  const displayType = (type in allowedTypes) ? type : '-';
+  const card = buildCard({ fileName: file.name, displayType, columns, totalLines, rowsChecked: dataRows.length, sampled, errors });
   pendingCard.replaceWith(card);
   return errors.length > 0;
 }

@@ -19,7 +19,7 @@ export function buildPendingCard(fileName) {
   return card;
 }
 
-export function buildCard({ fileName, displayType, columns, totalLines, errors }) {
+export function buildCard({ fileName, displayType, columns, totalLines, rowsChecked, sampled, errors }) {
   const hasErrors = errors.length > 0;
 
   const card = document.createElement('article');
@@ -45,7 +45,8 @@ export function buildCard({ fileName, displayType, columns, totalLines, errors }
   meta.className = 'file-card-meta';
   const metaFields = [
     ['Type', displayType],
-    ['Total lines', totalLines],
+    ['Data rows', (totalLines - 1).toLocaleString()],
+    ...(sampled ? [['Rows checked', `${rowsChecked.toLocaleString()} (large file, first ${rowsChecked.toLocaleString()} rows only)`]] : []),
     ['Columns', columns.join(', ')],
   ];
   for (const [label, value] of metaFields) {
