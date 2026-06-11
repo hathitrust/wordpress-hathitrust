@@ -9,7 +9,6 @@ let ctx = await esbuild.context({
     'src/css/editor-style.css',
     'src/js/cookies.js',
     'src/js/highlight.js',
-    'src/js/print-holdings-checker.js',
     'src/css/print-holdings-checker.css'
   ],
   bundle: false,
@@ -19,6 +18,15 @@ let ctx = await esbuild.context({
   logLevel: 'info',
 });
 
+let holdingsCtx = await esbuild.context({
+  entryPoints: ['src/js/print-holdings-checker/index.js'],
+  bundle: true,
+  minify: true,
+  outfile: 'dist/js/print-holdings-checker.min.js',
+  logLevel: 'info',
+});
+
 await ctx.watch();
+await holdingsCtx.watch();
 
 console.log('watching...');
