@@ -25,7 +25,7 @@
 	 */
 	function pg_enqueue_site_files() {
 
-		$BABEL_ROOT = str_replace('www', 'babel', $_SERVER['DOCUMENT_ROOT']);
+		$BABEL_ROOT = ('local' === wp_get_environment_type()) ? $_SERVER['DOCUMENT_ROOT'] : str_replace('www', 'babel', $_SERVER['DOCUMENT_ROOT']);
 		$manifest = json_decode(
 			file_get_contents($BABEL_ROOT . '/firebird-common/dist/manifest.json'),
 			true
@@ -79,6 +79,17 @@
 			wp_enqueue_script( 'cookie-scripts', get_template_directory_uri() . '/dist/js/cookies.min.js', array('firebird-scripts'), filemtime( get_template_directory() . '/dist/js/cookies.min.js' ), TRUE );
 			wp_enqueue_script( 'highlight-scripts', get_template_directory_uri() . '/dist/js/highlight.min.js', array('firebird-scripts'), filemtime( get_template_directory() . '/dist/js/highlight.min.js' ), TRUE );
 			// hotjar script is added through firebird-common + ping
+		}
+
+		/* print holdings checker */
+		if ( is_page( 'print-holdings-checker' ) ) {
+			if ( 'local' === wp_get_environment_type() ) {
+				wp_enqueue_style( 'print-holdings-checker', get_template_directory_uri() . '/src/css/print-holdings-checker.css', [], filemtime( get_template_directory() . '/src/css/print-holdings-checker.css' ) );
+				wp_enqueue_script( 'print-holdings-checker-js', get_template_directory_uri() . '/src/js/print-holdings-checker.js', [], filemtime( get_template_directory() . '/src/js/print-holdings-checker.js' ), true );
+			} else {
+				wp_enqueue_style( 'print-holdings-checker', get_template_directory_uri() . '/dist/css/print-holdings-checker.min.css', [], filemtime( get_template_directory() . '/dist/css/print-holdings-checker.min.css' ) );
+				wp_enqueue_script( 'print-holdings-checker-js', get_template_directory_uri() . '/dist/js/print-holdings-checker.min.js', [], filemtime( get_template_directory() . '/dist/js/print-holdings-checker.min.js' ), true );
+			}
 		}
 
 		/* matomo */
@@ -206,6 +217,7 @@
 				'loading'			=> TRUE,
 				'src'				=> TRUE,
 				'width'				=> TRUE,
+				'title'				=> TRUE,
 			);
 		}
 

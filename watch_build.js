@@ -8,7 +8,9 @@ let ctx = await esbuild.context({
     'src/css/home.css',
     'src/css/editor-style.css',
     'src/js/cookies.js',
-    'src/js/highlight.js'
+    'src/js/highlight.js',
+    'src/js/print-holdings-checker.js',
+    'src/css/print-holdings-checker.css'
   ],
   bundle: false,
   minify: true,

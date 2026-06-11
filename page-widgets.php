@@ -44,21 +44,19 @@
 
         
             <div class="pb widget-container">
-                
-                    <h2>Catalog Search with Multiple Options</h2>
-                    <iframe id="iframe_htCatalogSearch01" style="border: 0; margin: 0 3px; overflow: hidden" width="451" height="91"><a href="https://catalog.hathitrust.org">Search the HathiTrust Digital Library Catalog</a></iframe><script type="text/javascript">var ht_url = "https://www.hathitrust.org/searchbox_multi/?referrer=" + window.location.hostname;document.getElementById("iframe_htCatalogSearch01").contentWindow.document.location.href = ht_url;</script>
-                    <form>
-                        <div>
-                            <label for="widgetcode_01">Copy Code Snippet:</label>
-                            <input type="text" id="widgetcode_01" style="font-family:monospace;" value='<iframe id="iframe_htCatalogSearch01" style="border: 0; margin: 0 3px; overflow: hidden" width="451" height="91"><a href="https://catalog.hathitrust.org">Search the HathiTrust Digital Library Catalog</a></iframe><script type="text/javascript">var ht_url = "https://www.hathitrust.org/searchbox_multi/?referrer=" + window.location.hostname;document.getElementById("iframe_htCatalogSearch01").contentWindow.document.location.href = ht_url;</script>'>
-                        </div>
-                    </form>
-              
+                <h2>Catalog Search with Multiple Options</h2>
+                <iframe id="iframe_htCatalogSearch01" style="border: 0; margin: 0 3px; overflow: hidden" width="451" height="91" title="Widget to Search the HathiTrust Digital Library Catalog with multiple options"><a href="https://catalog.hathitrust.org">Search the HathiTrust Digital Library Catalog</a></iframe><script type="text/javascript">var ht_url = "https://www.hathitrust.org/searchbox_multi/?referrer=" + window.location.hostname;document.getElementById("iframe_htCatalogSearch01").contentWindow.document.location.href = ht_url;</script>
+                <form>
+                    <div>
+                        <label for="widgetcode_01">Copy Code Snippet:</label>
+                        <input type="text" id="widgetcode_01" style="font-family:monospace;" value='<iframe id="iframe_htCatalogSearch01" style="border: 0; margin: 0 3px; overflow: hidden" width="451" height="91"><a href="https://catalog.hathitrust.org">Search the HathiTrust Digital Library Catalog</a></iframe><script type="text/javascript">var ht_url = "https://www.hathitrust.org/searchbox_multi/?referrer=" + window.location.hostname;document.getElementById("iframe_htCatalogSearch01").contentWindow.document.location.href = ht_url;</script>'>
+                    </div>
+                </form>
             </div>
        
             <div class="pb widget-container">
                 <h2>Catalog Search</h2>
-                <iframe id="iframe_htCatalogSearch02" style="border: 0; margin: 0 3px; overflow: hidden" width="294" height="26"><a href="https://catalog.hathitrust.org">Search the HathiTrust Digital Library Catalog</a></iframe><script type="text/javascript">var ht_url = 'https://www.hathitrust.org/searchbox_catalog/?referrer=' + window.location.hostname;document.getElementById('iframe_htCatalogSearch02').contentWindow.document.location.href = ht_url;</script>
+                <iframe id="iframe_htCatalogSearch02" style="border: 0; margin: 0 3px; overflow: hidden" width="294" height="26" title="Widget to Search the HathiTrust Digital Library Catalog"><a href="https://catalog.hathitrust.org">Search the HathiTrust Digital Library Catalog</a></iframe><script type="text/javascript">var ht_url = 'https://www.hathitrust.org/searchbox_catalog/?referrer=' + window.location.hostname;document.getElementById('iframe_htCatalogSearch02').contentWindow.document.location.href = ht_url;</script>
                 <form>
                     <div>
                         <label for="widgetcode_02">Copy Code Snippet:</label>
@@ -69,7 +67,7 @@
 
             <div class="pb widget-container">
                 <h2>Catalog Search with Full View Option</h2>
-                <iframe id="iframe_htCatalogSearch03" style="border: 0; margin: 0 3px; overflow: hidden" width="300" height="63" ><a href="https://catalog.hathitrust.org">Search the HathiTrust Digital Library Catalog</a></iframe><script type="text/javascript">var ht_url = 'https://www.hathitrust.org/searchbox_catalog_fv/?referrer=' + window.location.hostname;document.getElementById('iframe_htCatalogSearch03').contentWindow.document.location.href = ht_url;</script>
+                <iframe id="iframe_htCatalogSearch03" style="border: 0; margin: 0 3px; overflow: hidden" width="300" height="63" title="Widget to Search the HathiTrust Digital Library Catalog with Full-view option"><a href="https://catalog.hathitrust.org">Search the HathiTrust Digital Library Catalog</a></iframe><script type="text/javascript">var ht_url = 'https://www.hathitrust.org/searchbox_catalog_fv/?referrer=' + window.location.hostname;document.getElementById('iframe_htCatalogSearch03').contentWindow.document.location.href = ht_url;</script>
                 <form>
                     <div>
                         <label for="widgetcode_03">Copy Code Snippet:</label>
@@ -80,7 +78,7 @@
 
             <div class="pb widget-container">
                 <h2>Full Text Search</h2>
-                <iframe id="iframe_htFullTextSearch01" style="border: 0; margin: 0 3px; overflow: hidden" width="294" height="26"><a href="https://catalog.hathitrust.org">Search the HathiTrust Digital Library Catalog</a></iframe><script type="text/javascript">var ht_url = 'https://www.hathitrust.org/searchbox_fulltext/?referrer=' + window.location.hostname;document.getElementById('iframe_htFullTextSearch01').contentWindow.document.location.href = ht_url;</script>
+                <iframe id="iframe_htFullTextSearch01" style="border: 0; margin: 0 3px; overflow: hidden" width="294" height="26" title="Widget to Search the HathiTrust Digital Library Catalogy Full-Text"><a href="https://catalog.hathitrust.org">Search the HathiTrust Digital Library Catalog</a></iframe><script type="text/javascript">var ht_url = 'https://www.hathitrust.org/searchbox_fulltext/?referrer=' + window.location.hostname;document.getElementById('iframe_htFullTextSearch01').contentWindow.document.location.href = ht_url;</script>
                 <form>
                     <div>
                         <label for="widgetcode_04">Copy Code Snippet:</label>
@@ -91,7 +89,7 @@
 
             <div class="pb widget-container">
                 <h2>Full Text Search with Full View Option</h2>
-                <iframe id="iframe_htFullTextSearch02" style="border: 0; margin: 0 3px; overflow: hidden" width="300" height="63"><a href="https://catalog.hathitrust.org">Search the HathiTrust Digital Library Catalog</a></iframe><script type="text/javascript">var ht_url = 'https://www.hathitrust.org/searchbox_fulltext_fv/?referrer=' + window.location.hostname;document.getElementById('iframe_htFullTextSearch02').contentWindow.document.location.href = ht_url;</script>
+                <iframe id="iframe_htFullTextSearch02" style="border: 0; margin: 0 3px; overflow: hidden" width="300" height="63" title="Widget to Search the HathiTrust Digital Library Catalog Full-text with full-view option"><a href="https://catalog.hathitrust.org">Search the HathiTrust Digital Library Catalog</a></iframe><script type="text/javascript">var ht_url = 'https://www.hathitrust.org/searchbox_fulltext_fv/?referrer=' + window.location.hostname;document.getElementById('iframe_htFullTextSearch02').contentWindow.document.location.href = ht_url;</script>
                 <form>
                     <div>
                         <label for="widgetcode_05">Copy Code Snippet:</label>
