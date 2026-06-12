@@ -15,7 +15,9 @@
 			$tag = '<script type="module" src="' . esc_url( $src ) . '"></script>';
 		// } else if ( 'site-scripts' === $handle ) {
 		// 	$tag = '<script type="module" src="' . esc_url( $src ) . '"></script>';
-		} 	
+		} elseif ( 'print-holdings-checker-js' === $handle && 'local' === wp_get_environment_type() ) {
+			$tag = '<script type="module" src="' . esc_url( $src ) . '"></script>';
+		}
 		return $tag;
 	}
 
@@ -85,7 +87,7 @@
 		if ( is_page( 'print-holdings-checker' ) ) {
 			if ( 'local' === wp_get_environment_type() ) {
 				wp_enqueue_style( 'print-holdings-checker', get_template_directory_uri() . '/src/css/print-holdings-checker.css', [], filemtime( get_template_directory() . '/src/css/print-holdings-checker.css' ) );
-				wp_enqueue_script( 'print-holdings-checker-js', get_template_directory_uri() . '/src/js/print-holdings-checker.js', [], filemtime( get_template_directory() . '/src/js/print-holdings-checker.js' ), true );
+				wp_enqueue_script( 'print-holdings-checker-js', get_template_directory_uri() . '/src/js/print-holdings-checker/index.js', [], filemtime( get_template_directory() . '/src/js/print-holdings-checker/index.js' ), true );
 			} else {
 				wp_enqueue_style( 'print-holdings-checker', get_template_directory_uri() . '/dist/css/print-holdings-checker.min.css', [], filemtime( get_template_directory() . '/dist/css/print-holdings-checker.min.css' ) );
 				wp_enqueue_script( 'print-holdings-checker-js', get_template_directory_uri() . '/dist/js/print-holdings-checker.min.js', [], filemtime( get_template_directory() . '/dist/js/print-holdings-checker.min.js' ), true );
