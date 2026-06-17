@@ -127,14 +127,19 @@ export function validateRows(columns, dataRows) {
     }
 
     if (oclcIdx >= 0 && oclcIdx < fields.length) {
-      const ocn = fields[oclcIdx].trim();
-      if (ocn !== '') {
-        if (/\d+\.?\d*[eE][+\-]?\d+/.test(ocn)) {
-          scientificNotation.push(ocn);
-        } else if (/^99\d+$/.test(ocn) && ocn.length > 15) {
-          almaMmsIds.push(ocn);
-        } else if (!/^\d+$/.test(ocn) || ocn === '0') {
-          invalidOcns.push(ocn);
+      const ocnField = fields[oclcIdx].trim();
+      if (ocnField !== '') {
+        for (const part of ocnField.split(/[,:;|/ ]+/).map(s => s.trim()).filter(Boolean)) {
+          if (/\d+\.?\d*[eE][+\-]?\d+/.test(part)) {
+            scientificNotation.push(part);
+          } else {
+            const numeric = stripOcnPrefix(part);
+            if (numeric === null || !/^\d+$/.test(numeric) || numeric === '0') {
+              invalidOcns.push(part);
+            } else if (/^99/.test(numeric) && numeric.length > 15) {
+              almaMmsIds.push(numeric);
+            }
+          }
         }
       }
     }
@@ -166,7 +171,7 @@ export function validateRows(columns, dataRows) {
   if (almaMmsIds.length > 0)
     errors.push(`${almaMmsIds.length} apparent Alma MMS ID${almaMmsIds.length !== 1 ? 's' : ''} in oclc column (e.g. ${examples(almaMmsIds)}) - replace with OCLC numbers`);
   if (invalidOcns.length > 0)
-    errors.push(`${invalidOcns.length} invalid OCN${invalidOcns.length !== 1 ? 's' : ''} - must be a positive integer (e.g. ${examples(invalidOcns)})`);
+    errors.push(`${invalidOcns.length} invalid OCN${invalidOcns.length !== 1 ? 's' : ''} - must be digits or a prefixed number like ocn12345 or (OCoLC)12345 (e.g. ${examples(invalidOcns)})`);
   if (invalidStatus.length > 0)
     errors.push(`${invalidStatus.length} invalid status value${invalidStatus.length !== 1 ? 's' : ''} - must be CH, LM, WD, or empty (got ${examples(invalidStatus)})`);
   if (invalidCondition.length > 0)
@@ -181,6 +186,21 @@ function linesSummary(singular, plural, lineNums) {
   const isPlural = lineNums.length !== 1;
   const shown = lineNums.slice(0, 5).join(', ') + (lineNums.length > 5 ? '…' : '');
   return `${lineNums.length} ${isPlural ? plural : singular} (line${isPlural ? 's' : ''}: ${shown})`;
+}
+
+// Strips known OCN prefixes ((OCoLC), ocm, ocn, etc.) and returns the numeric string.
+// Handles nested prefixes like (OCoLC)ocm12345. Returns null for unrecognized paren prefixes.
+function stripOcnPrefix(val) {
+  let result = val;
+  if (/^\((oclc|ocm|ocn|ocolc|on)\)/i.test(result)) {
+    result = result.replace(/^\(.+?\)/, '');
+  } else if (/^\(.+?\)/.test(result)) {
+    return null;
+  }
+  if (/^(oclc|ocm|ocn|ocolc|on)/i.test(result)) {
+    result = result.replace(/^\D+/, '');
+  }
+  return result;
 }
 
 function examples(values) {

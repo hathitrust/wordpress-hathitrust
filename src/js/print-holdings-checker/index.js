@@ -20,6 +20,7 @@ if (dropZone) {
   document.getElementById('file-button').addEventListener('click', () => fileInput.click());
   fileInput.addEventListener('change', (event) => {
     const files = [...event.target.files];
+    fileInput.value = ''; // reset so the same file can be re-selected after clearing results
     const invalid = files.filter(f => !f.name.toLowerCase().endsWith('.tsv'));
     if (invalid.length > 0) {
       showError(outputContainer, `Only .tsv files are supported. Unsupported file${invalid.length > 1 ? 's' : ''}: ${invalid.map(f => f.name).join(', ')}`);
@@ -89,7 +90,7 @@ async function processFileList(fileList) {
 
   const errorCount = results.filter(Boolean).length;
   const label = errorCount === 0
-    ? `Results: all ${fileList.length} file${fileList.length > 1 ? 's' : ''} passed`
+    ? `Results: all ${fileList.length} file${fileList.length > 1 ? 's' : ''} passed with no errors`
     : `Results: ${errorCount} of ${fileList.length} file${fileList.length > 1 ? 's' : ''} have errors`;
   outputContainer.setAttribute('aria-label', label);
 
