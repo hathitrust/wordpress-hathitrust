@@ -44,15 +44,23 @@ function validateFilename(fileName, errors, memberIds) {
   const baseName = lowerName.endsWith('.tsv') ? fileName.slice(0, -4) : fileName;
   const parts = baseName.split('_');
 
-  if (parts.length < 4) {
+  // Locate the date by shape (8 digits, YYYYMMDD) so an optional _rest suffix after it is tolerated.
+  const dateIdx = parts.findIndex(p => /^\d{8}$/.test(p));
+
+  if (dateIdx === -1) {
+    errors.push(`Filename must include a date in YYYYMMDD format`);
+    return null;
+  }
+
+  if (dateIdx < 3) {
     errors.push(`Filename must follow the format: <member_id>_<type>_<update_type>_<date>.tsv`);
     return null;
   }
 
-  const memberId = parts.slice(0, -3).join('_');
-  const type = parts.at(-3);
-  const updateType = parts.at(-2);
-  const date = parts.at(-1);
+  const memberId = parts.slice(0, dateIdx - 2).join('_');
+  const type = parts[dateIdx - 2];
+  const updateType = parts[dateIdx - 1];
+  const date = parts[dateIdx];
 
   if (memberIds !== null && !memberIds.has(memberId)) {
     errors.push(`'${memberId}' is not a recognized HathiTrust member ID`);
@@ -66,9 +74,7 @@ function validateFilename(fileName, errors, memberIds) {
     errors.push(`Update type must be 'full' (got '${updateType}')`);
   }
 
-  if (!/^\d{8}$/.test(date)) {
-    errors.push(`Date must be 8 digits in YYYYMMDD format (got '${date}')`);
-  } else if (!isValidCalendarDate(date)) {
+  if (!isValidCalendarDate(date)) {
     errors.push(`'${date}' is not a valid calendar date - date must be in YYYYMMDD format`);
   }
 
