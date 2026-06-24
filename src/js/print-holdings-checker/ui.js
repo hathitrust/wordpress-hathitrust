@@ -1,6 +1,25 @@
-import { allowedTypes } from './validate.js';
+export function buildPendingCard(fileName) {
+  const card = document.createElement('article');
+  card.className = 'file-card file-card--pending';
+  card.setAttribute('aria-label', `${fileName}, processing`);
+  card.setAttribute('aria-busy', 'true');
 
-export function buildCard({ fileName, type, columns, totalLines, errors }) {
+  const header = document.createElement('div');
+  header.className = 'file-card-header';
+  const fileNameHeading = document.createElement('h2');
+  fileNameHeading.className = 'file-card-name h3';
+  fileNameHeading.textContent = fileName;
+  const spinner = document.createElement('span');
+  spinner.className = 'file-card-spinner';
+  spinner.setAttribute('aria-hidden', 'true');
+  header.appendChild(fileNameHeading);
+  header.appendChild(spinner);
+  card.appendChild(header);
+
+  return card;
+}
+
+export function buildCard({ fileName, displayType, columns, totalLines, rowsChecked, sampled, errors }) {
   const hasErrors = errors.length > 0;
 
   const card = document.createElement('article');
@@ -25,8 +44,9 @@ export function buildCard({ fileName, type, columns, totalLines, errors }) {
   const meta = document.createElement('dl');
   meta.className = 'file-card-meta';
   const metaFields = [
-    ['Type', (type in allowedTypes) ? type : '—'],
-    ['Total lines', totalLines],
+    ['Type', displayType],
+    ['Data rows', (totalLines - 1).toLocaleString()],
+    ...(sampled ? [['Rows checked', `${rowsChecked.toLocaleString()} (large file, first ${rowsChecked.toLocaleString()} rows only)`]] : []),
     ['Columns', columns.join(', ')],
   ];
   for (const [label, value] of metaFields) {
