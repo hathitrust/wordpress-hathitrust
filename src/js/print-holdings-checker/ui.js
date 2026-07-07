@@ -44,10 +44,10 @@ export function buildCard({ fileName, displayType, columns, totalLines, rowsChec
   const meta = document.createElement('dl');
   meta.className = 'file-card-meta';
   const metaFields = [
-    ['Type', displayType],
+    ['Holdings type', displayType],
     ['Data rows', (totalLines - 1).toLocaleString()],
     ...(sampled ? [['Rows checked', `${rowsChecked.toLocaleString()} (large file, first ${rowsChecked.toLocaleString()} rows only)`]] : []),
-    ['Columns', columns.join(', ')],
+    ['Columns detected', columns.join(', ')],
   ];
   for (const [label, value] of metaFields) {
     const div = document.createElement('div');

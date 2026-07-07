@@ -57,6 +57,11 @@
     color: var(--primary700);
 }
 
+.file-card--ok .file-card-badge {
+    background: var(--success100);
+    color: var(--success700);
+}
+
 .file-card-meta {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -114,6 +119,28 @@
 .checker-clear-btn {
     align-self: flex-start;
     margin-top: 0.5rem;
+}
+
+.checker-history {
+    margin-top: 1.5rem;
+}
+
+.checker-history h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: var(--neutral600);
+    margin-bottom: 0.5rem;
+}
+
+.checker-history ul {
+    margin: 0;
+    padding-left: 1.25rem;
+    font-size: 0.9rem;
+    color: var(--neutral700);
+}
+
+.checker-instructions {
+    margin-top: 2rem;
 }
 
 .checker-drop-error {
