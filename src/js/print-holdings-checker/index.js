@@ -59,6 +59,19 @@ function addHistoryEntry(fileName, errorCount) {
 
 loadHistory();
 
+const clearHistoryButton = document.getElementById('clear-history-button');
+if (clearHistoryButton) {
+  clearHistoryButton.addEventListener('click', () => {
+    historyList.replaceChildren();
+    historySection.style.display = 'none';
+    try {
+      localStorage.removeItem(HISTORY_STORAGE_KEY);
+    } catch {
+      // localStorage unavailable (e.g. private browsing) - nothing was persisted anyway.
+    }
+  });
+}
+
 if (dropZone) {
   dropZone.addEventListener('drop', dropHandler);
   dropZone.addEventListener('dragover', dragOverHandler);

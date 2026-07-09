@@ -36,7 +36,11 @@
             <div id="output" class="checker-output" style="display:none" tabindex="-1" aria-label="Results" aria-live="polite"></div>
 
             <section id="history-section" class="checker-history" aria-label="Check history" style="display:none">
-                <h2>History</h2>
+                <div class="checker-history-header">
+                    <h2>History</h2>
+                    <button type="button" class="btn btn-tertiary" id="clear-history-button">Clear history</button>
+                </div>
+                <p class="checker-history-note">Stored only in your browser, never sent anywhere.</p>
                 <ul id="history-list"></ul>
             </section>
 
