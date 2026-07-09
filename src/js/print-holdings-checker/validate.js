@@ -72,11 +72,22 @@ function validateFilename(fileName, errors, memberIds) {
   const dateIdx = parts.findIndex(p => /^\d{8}$/.test(p));
   const effectiveIdx = dateIdx !== -1 ? dateIdx : parts.findIndex(p => /^\d{8}/.test(p));
 
-  // With a usable date position, extract fields by position. Otherwise fall back to fixed
-  // positions 0-3 - either way, the same field-by-field checks below apply.
-  const [memberId, type, updateType, dateSegment] = (effectiveIdx !== -1 && effectiveIdx >= 3)
-    ? [parts.slice(0, effectiveIdx - 2).join('_'), parts[effectiveIdx - 2], parts[effectiveIdx - 1], parts[effectiveIdx]]
-    : parts;
+  // With a usable date position and enough segments before it, extract fields by their normal
+  // position. Otherwise a whole segment (usually update_type) is likely missing, which shifts
+  // everything - pull the date out by shape wherever it landed instead of assuming it's missing,
+  // and assign whatever segments remain to member_id/type/update_type in order.
+  let memberId, type, updateType, dateSegment;
+  if (effectiveIdx !== -1 && effectiveIdx >= 3) {
+    memberId = parts.slice(0, effectiveIdx - 2).join('_');
+    type = parts[effectiveIdx - 2];
+    updateType = parts[effectiveIdx - 1];
+    dateSegment = parts[effectiveIdx];
+  } else if (effectiveIdx !== -1) {
+    dateSegment = parts[effectiveIdx];
+    [memberId, type, updateType] = parts.slice(0, effectiveIdx).concat(parts.slice(effectiveIdx + 1));
+  } else {
+    [memberId, type, updateType, dateSegment] = parts;
+  }
 
   return validateFilenameFields({ memberId, type, updateType, dateSegment }, errors, memberIds);
 }

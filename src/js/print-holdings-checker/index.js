@@ -207,7 +207,7 @@ async function processFile(file, pendingCard) {
       text = new TextDecoder(utf16Encoding).decode(buffer);
       const headerLine = text.split(/\r\n|\r|\n/)[0].split('\t').join(', ');
       const encodingName = utf16Encoding === 'utf-16le' ? 'UTF-16LE' : 'UTF-16BE';
-      encodingErrors.push(`File appears to be ${encodingName} encoded - HathiTrust's ingest system only accepts UTF-8. Please re-save or re-export this file as UTF-8. (Decoded correctly, the header reads: "${headerLine}" - reading these same bytes as UTF-8 instead is what makes column names appear unrecognizable.)`);
+      encodingErrors.push(`File appears to be ${encodingName} encoded - HathiTrust's print holdings system only accepts UTF-8. Please re-save or re-export this file as UTF-8. (Decoded correctly, the header reads: "${headerLine}" - reading these same bytes as UTF-8 instead is what makes column names appear unrecognizable.)`);
     } else {
       // fatal: true throws on bad bytes; fall back to lenient decode so validation still runs.
       try {
