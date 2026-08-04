@@ -31,6 +31,8 @@ Version:		1.1.20230824
   --primary700: #a14e11;
   --primary800: #783b0d;
   --primary900: #502708;
+  --success100: #e6f4ea;
+  --success700: #1e7b34;
 }
 
 /* basic styles */
