@@ -453,56 +453,6 @@
 	/* HT DEV CUSTOM */
 	/*****************/	
 
-	//format bytes to mb/kb
-	function formatBytes($size, $precision = 2) {
-		$base = log($size, 1024);
-		$suffixes = array('B', 'kB', 'MB', 'GB', 'TB');   
-
-		return round(pow(1024, $base - floor($base)), $precision) .' '. $suffixes[floor($base)];
-	}
-
-	// my attempt to write a  directory listing with php
-	// TODO: use HT.www_domain to set preview vs prod
-	function file_list($directory, $linkpath) {
-		
-		// $directory = "/htapps/test.www/files/hathifiles";
-		$files = new \FileSystemIterator($directory);
-
-		$html = [];
-		class HTfile {
-			public $fileName;
-			// public $filePath;
-			public $lastModified;
-			public $fileSize;
-			// public $fileInfo;
-		}
-		foreach ($files as $file) {
-			$hathifile = new HTfile();
-			//if ($files->isDir() ) {
-			//  $href = add_query_arg(rawurlencode(base64_encode($directory . '/' . $file)));
-			//}
-		
-			$hathifile->fileName = $files->getFileName();
-			// $hathifile->filePath = $files->getPathName();
-			$hathifile->lastModified = $files->getMTime();
-			$hathifile->fileSize = formatBytes($files->getSize());
-			// $hathifile->fileInfo = $files->getFileInfo();
-
-			$html[] = $hathifile;
-
-		}
-
-		//sort array by last modified, starting with newest
-		usort($html, function($a, $b) {
-			return ($b->lastModified) - ($a->lastModified);
-		});
-
-		foreach ($html as $key => $value) {
-			// echo "<tr><td><a href='https://www.hathitrust.org/sites/www.hathitrust.org/files/hathifiles/".$value->fileName."'>".$value->fileName."</a></td><td>".date('M d, Y', $value->lastModified)."</td><td>".$value->fileSize."</td></tr>";
-			echo "<tr><td><a href='".$linkpath.$value->fileName."'>".$value->fileName."</a></td><td>".date('M d, Y', $value->lastModified)."</td><td>".$value->fileSize."</td></tr>";
-		}
-	}
-
 	//truncate text, default character limit is 250
 	//used in search.php for ACF content excerpts
 	function truncate($text, $length = 250) {
