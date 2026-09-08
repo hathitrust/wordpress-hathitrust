@@ -19,7 +19,7 @@
 
             <div class="d-flex flex-column gap-3 help-links">
               <p>Here are a few links that may be helpful:</p>
-              <ul class="m-0 p-0 list-unstyled d-flex gap-3">
+              <ul class="m-0 p-0 list-unstyled d-flex gap-3 flex-wrap">
                 <li><a href="https://www.hathitrust.org">Home</a></li>
                 <li><a href="https://babel.hathitrust.org/cgi/ls?a=page&page=advanced">Advanced Search</a></li>
                 <li><a href="https://hathitrust.atlassian.net/servicedesk/customer/portals">Help Center</a></li>

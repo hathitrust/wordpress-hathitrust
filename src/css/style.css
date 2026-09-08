@@ -338,7 +338,7 @@ hathi-website-footer {
 position: relative;
 }
 .error404 .error-wrapper section  {
-width: 27.75rem;
+max-width: 27.75rem;
 gap: 3rem;
 margin-top: 3rem;
 }
@@ -388,6 +388,16 @@ min-height: 37.5rem;
   .error404 .error-wrapper  {
     background-size: 21.33rem;
     min-height: 42rem;
+  }
+}
+@media (max-width: 365px) {
+  .error404 .error-wrapper  {
+    background-size: 15.33rem;
+  }
+}
+@media (max-width: 280px) {
+  .error404 .error-wrapper  {
+    background-size: 12.33rem;
   }
 }
 .bc {
