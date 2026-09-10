@@ -374,30 +374,15 @@ margin: 0;
   color: var(--color-primary-600);
 }
 .error404 .error-wrapper  {
-background-image: url(../../images/error_elephant.svg);
-background-position: right bottom;
-background-repeat: no-repeat;
-min-height: 37.5rem;
+  background-image: url(../../images/error_elephant.svg);
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  min-height: 37.5rem;
+  background-size: clamp(24rem, -11.863rem + 57.843vw, 38.75rem);
 }
-@media (max-width: 1200px) { 
+@media (max-width: 991px) {
   .error404 .error-wrapper  {
-    background-size: 28.44rem;
-  }
-}
-@media (max-width: 990px) {
-  .error404 .error-wrapper  {
-    background-size: 21.33rem;
-    min-height: 42rem;
-  }
-}
-@media (max-width: 365px) {
-  .error404 .error-wrapper  {
-    background-size: 15.33rem;
-  }
-}
-@media (max-width: 280px) {
-  .error404 .error-wrapper  {
-    background-size: 12.33rem;
+    background-size: clamp(11rem, 7.185rem + 19.076vw, 19rem);
   }
 }
 .bc {
