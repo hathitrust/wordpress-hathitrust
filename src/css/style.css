@@ -370,6 +370,9 @@ font-size: var(--ht-text-md);
 color: var(--color-neutral-800);
 margin: 0;
 }
+.error404 .error-wrapper .help-links ul {
+  flex-wrap: wrap;
+}
 .error404 .error-wrapper .help-links ul li a {
   color: var(--color-primary-600);
 }
