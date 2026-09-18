@@ -335,7 +335,17 @@ hathi-website-footer {
   display: block;
 }
 .error404 .error-wrapper  {
-position: relative;
+  position: relative;
+  background-image: url(../../images/error_elephant.svg);
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  min-height: 37.5rem;
+  background-size: clamp(24rem, -14.902rem + 62.745vw, 40rem);
+}
+@media (max-width: 991px) {
+  .error404 .error-wrapper  {
+    background-size: clamp(14rem, 10.504rem + 17.478vw, 21.33rem);
+  }
 }
 .error404 .error-wrapper section  {
 max-width: 27.75rem;
@@ -376,18 +386,7 @@ margin: 0;
 .error404 .error-wrapper .help-links ul li a {
   color: var(--color-primary-600);
 }
-.error404 .error-wrapper  {
-  background-image: url(../../images/error_elephant.svg);
-  background-position: right bottom;
-  background-repeat: no-repeat;
-  min-height: 37.5rem;
-  background-size: clamp(24rem, -14.902rem + 62.745vw, 40rem);
-}
-@media (max-width: 991px) {
-  .error404 .error-wrapper  {
-    background-size: clamp(14rem, 10.504rem + 17.478vw, 21.33rem);
-  }
-}
+
 .bc {
   grid-area: 1 / 1;
   margin-inline: max(clamp(0.938rem, calc(0.268rem + 3.348vw), 1.875rem), ((100% - 73.125rem) / 2));
